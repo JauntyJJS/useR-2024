@@ -1,0 +1,97 @@
+/*-- scss:defaults --*/
+
+// fonts
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:600,600i&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Domine&display=swap);
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
+
+// headings
+$presentation-heading-font: 'Domine', serif !default;
+$presentation-font-size-root: 1.8rem !default;
+$presentation-h1-font-size: 5.75rem !default;
+$presentation-h2-font-size: 2.75rem !default;
+$presentation-h3-font-size: 2rem !default;
+
+$link-color: #42affa;
+
+//code
+$font-family-monospace: 'Fira Mono', monospace  !default;
+//$code-bg: #1f2430;
+$code-block-bg: #1f2430;
+$code-color: #8328c1;
+
+//background
+$body-bg: #F6EFDC;
+
+/*-- scss:rules --*/
+
+.reveal code {
+  font-size: 0.9em !important;
+}
+
+.reveal .progress {
+  background: #77ccd3;
+  color: #3570b6;
+}
+
+.reveal .slide-number {
+  font-size: 24pt;
+  color: #263b8c;
+}
+
+.reveal .navigate-right .controls-arrow {
+  font-size: 10px;
+  color: #263b8c;
+}
+
+.reveal .navigate-left .controls-arrow {
+  font-size: 10px;
+  color: #263b8c;
+}
+
+#title-slide {
+  text-align: left;
+
+  .title{
+    font-family: Domine, serif;
+    font-size: 5rem !important;
+  }
+
+  .subtitle,
+  .institute,
+  .quarto-title-affiliation,
+  .quarto-title-author-email {
+    font-size: 2.5rem;
+    font-style: italic;
+    color: #656565;
+  }
+
+  .author, .quarto-title-author-name {
+    color: $body-color;
+  }
+
+  .quarto-title-authors {
+    display: flex;
+    justify-content: left;
+    .quarto-title-author {
+      padding-left: 0em;
+      padding-right: 0em;
+      width: 100%;
+    }
+  }
+
+  p.author::before, div.quarto-title-author::before {
+    content: "";
+    display: block;
+    border: none;
+    background-color: $body-color;
+    color: $body-color;
+    height: 3px;
+    margin-bottom: 1em;
+  }
+
+}
+

@@ -1,0 +1,1325 @@
+---
+title: Tackling Formatted Tabular Data from Excel
+subtitle: "`r verbaliseR::prettify_date('2024-07-10', uk_or_us = 'UK')`"
+author: Jeremy Selva [`r fontawesome::fa(name = "github", fill = "#273B8C")`](https://github.com/JauntyJJS) [`r fontawesome::fa(name = "linkedin", fill = "#273B8C")`](https://www.linkedin.com/in/jeremy-selva-085b9112a/) [`r fontawesome::fa(name = "link", fill = "#273B8C")`](https://jeremy-selva.netlify.app/) [`r fontawesome::fa(name = "twitter", fill = "#273B8C")`](https://twitter.com/JauntyJJS) <br> useR! 2024 [`r fontawesome::fa(name = "r-project", fill = "#273B8C")`](https://events.linuxfoundation.org/user/)
+format:
+  revealjs:
+    controls: true
+    progress: true
+    slide-number: true
+    scrollable: true
+    mouse-wheel: true
+    highlight-style: ayu-mirage
+    theme: [custom.scss]
+title-slide-attributes:
+    data-background-image: "images/title.JPG"
+    data-background-size: contain
+    data-background-opacity: "1"
+params:
+  show_table: TRUE
+---
+
+```{r setup, include=FALSE}
+library(fontawesome)
+library(verbaliseR)
+
+out_type <- knitr::opts_chunk$get("rmarkdown.pandoc.to")
+```
+
+## Formatted Cell in Excel
+
+Formatted cells are useful for clinicians to make highlight important information. They tend to be well received by people but not so for software.
+
+![](images/peak_view.png){fig-alt="A peak view of a formatted data set." fig-align="center"}
+
+## Formatted Cell in Excel
+
+The column `date_issue` has two format. One in General and the other in Date.
+
+![](images/date_forms.png){fig-alt="A column named date_issue with some Excel cells formatted as General and some as Date." fig-align="center"}
+
+## Formatted Cell in Excel
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+The column `colour_weight` has two colour format. 
+
+-  Cells in black are weight in pounds
+-  Cells in green are weight in kilogram
+
+![](images/colour_weights.png){fig-alt="A column named colour_weight with some Excel cells in black font for weight in pounds and in green font for weight in kilogram." fig-align="center"}
+
+:::
+
+::: {.column width="50%"}
+
+The columns `text_integer_issue` and `text_numeric_issue` are numeric columns but some cells were formatted as text. These cells are indicated by the green triangle.
+
+![](images/text_in_numeric.png){fig-alt="Two columns named text_integer_issue and text_numeric_issue have some cells with a green triangle to indicate that the cells were formatted as text instead of numeric." fig-align="center"}
+:::
+
+::::
+
+## Read Data Attempt 1
+
+We try to read the data but no warning was provided.
+
+```{r}
+#| label: read data attempt 1
+#| echo: true
+
+sample_excel_attempt_1 <- readxl::read_excel(
+  path = here::here("sample_excel.xlsx"),
+  sheet = "Sheet1"
+)
+
+```
+
+![](images/peak_view.png){fig-alt="A peak view of the data set used." fig-align="center"}
+
+## Read Data Attempt 1
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: sample_excel_attempt_1 html
+#| eval: !expr out_type == "html"
+
+if (params$show_table && knitr::is_html_output()) {
+  sample_excel_attempt_1 |>
+    reactable::reactable(
+      filterable = TRUE,
+      defaultPageSize = 5,
+      paginationType = "jump",
+      style = list(fontSize = "1rem"),
+    )
+}
+
+```
+
+:::
+
+:::
+
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="45%"}
+
+-  `date_issue`: those formatted as Date have been turned to numbers
+-  `colour_weight`: different colour inputs not differentiated
+
+![](images/date_format_as_date.png){fig-alt="A peak view of the data set used." fig-align="center"}
+
+:::
+
+::::
+
+## Read Data Attempt 1
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: sample_excel_attempt_1 col type
+#| echo: true
+
+str(sample_excel_attempt_1)
+
+```
+
+:::
+
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="45%"}
+
+Good news
+
+-  `numeric_integer_issue`: column is read correctly as numeric
+
+Bad news
+
+-  `text_integer_issue`: column turned to text
+-  `text_numeric_issue`: column turned to text
+-  `one_or_zero_issue`: column turned to logical
+
+:::
+
+::::
+
+## Read Data Attempt 2
+
+We try to read the formatted data indicating the right column types. This time it gives strange and intimidating warnings.
+
+```{r}
+#| label: read data attempt 2
+#| echo: true
+#| warning: true
+
+sample_excel_attempt_2 <- readxl::read_excel(
+  path = here::here("sample_excel.xlsx"),
+  sheet = "Sheet1",
+  col_types = c("text" , "date", 
+                "numeric", "numeric", "numeric", "numeric", "numeric")
+)
+
+```
+
+## Read Data Attempt 2
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: sample_excel_attempt_2 html
+#| eval: !expr out_type == "html"
+
+if (params$show_table && knitr::is_html_output()) {
+  sample_excel_attempt_2 |>
+    reactable::reactable(
+      filterable = TRUE,
+      defaultPageSize = 5,
+      paginationType = "jump",
+      style = list(fontSize = "1rem"),
+    )
+}
+
+```
+
+:::
+
+:::
+
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="45%"}
+
+The good news is that
+
+-  `one_or_zero_issue`: column is resolved
+
+On the other hand, the other issues are not fully resolved.
+
+-  `date_issue`: many rows turn to blank
+-  `colour_weight`: different colour inputs not differentiated
+
+:::
+
+::::
+
+## Read Data Attempt 2 Reflection
+
+From these previous failed attempt, my colleagues start to ask these questions and lose confidence in R.
+
+- Does the `id` column only have unique values ?
+- Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?
+- Does the columns in `numeric_integer_issue` only have integer values ?
+- Does the columns in `one_or_zero_issue` only have values 0 or 1 ?
+
+Resort to manual fixing of formatted cells in excel sheets. However, we can't be doing this for hundreds of rows all the times, especially when the later version of the same data set is only going to get larger.
+
+## Read Data Attempt 3
+
+We read the excel sheet again with the following `col_type` and deal with each column one at a time.
+
+- `id` as "text"
+- `date_issue` as "list"
+- ~~`colour_weight \r\nBlack in pounds\r\nGreen in kilograms` as "text"~~ 
+- `text_integer_issue` and `text_numeric_issue` as "text"
+- `numeric_integer_issue` and `one_or_zero_issue` as "numeric"
+
+```{r}
+#| label: sample_excel_attempt_3
+#| echo: true
+#| eval: true
+
+sample_excel_attempt_3 <- readxl::read_excel(
+  path = here::here("sample_excel.xlsx"),
+  sheet = "Sheet1",
+  col_types = c("text" , "list", 
+                "text", "text", "text", 
+                "numeric", "numeric")
+)
+
+```
+
+## Does the `id` column only have unique values ?
+
+Use [`pointblank::rows_distinct`](https://rstudio.github.io/pointblank/reference/rows_distinct.html) to validate columns that needs to have unique values.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: rows_distinct good example
+#| echo: true
+#| eval: true
+
+
+data.frame(id = c("ID_01", "ID_02")) |> 
+  pointblank::rows_distinct(columns = "id" )
+
+```
+
+```{r}
+#| label: rows_distinct bad example
+#| echo: true
+#| eval: true
+#| error: true
+
+data.frame(id = c("ID_01", "ID_02", "ID_01")) |> 
+  pointblank::rows_distinct(columns = "id" )
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: rows_distinct data example
+#| echo: true
+#| eval: true
+
+id_check <- sample_excel_attempt_3 |> 
+  dplyr::select("id") |> 
+  pointblank::rows_distinct(columns = "id" )
+
+```
+
+```{r}
+#| label: rows_distinct data print
+#| eval: true
+
+id_check |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+  
+```
+
+:::
+
+::::
+
+## Check integer in character
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+When we tried to read the excel data earlier (sample_excel_attempt_2) using `col_types` as numeric for the `text_integer_issue` column, we received some warning messages in relation to this column.
+
+-  Warning: Coercing text to numeric in D3 / R3C4: '54'
+-  Warning: Coercing text to numeric in D7 / R7C4: '33'
+
+The warnings inform the user that it sees "54" and "33" in cells D3 and D7 respectively as "text" and it is forced to be converted to numeric
+
+:::
+
+::: {.column width="30%"}
+
+![](images/text_integer_issue.png){fig-alt="Image showing 54 and 33 in cells D3 and D7 respectively as text." fig-align="center"}
+
+:::
+
+::::
+
+It may be safer to check if the column truly contain only positive integers even though they are in text, rather than relying on long warning messages.
+
+## Check integer in character
+
+Use [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [`pointblank::col_vals_gt`](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that the text are positive integers.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: positive integer in text check success
+#| echo: true
+#| eval: true
+#| error: true
+
+data.frame(integer_data = c("1", "2.0000", "59", NA)) |> 
+  pointblank::col_vals_regex(
+    columns = c("integer_data"),
+    regex = "^[1-9]([0-9]+)?(.[0]+)?$",
+    na_pass = TRUE,
+  ) 
+  
+```
+
+```{r}
+#| label: positive integer check success
+#| echo: true
+#| eval: true
+#| error: true
+
+data.frame(integer_data = c(1, 2, 3, NA)) |> 
+  pointblank::col_vals_gt(
+    columns = c("integer_data"),
+    value = 0,
+    na_pass = TRUE,    
+  )
+  
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: positive integer in text check fail
+#| echo: true
+#| eval: true
+#| error: true
+
+data.frame(integer_data = c("1", "2.0000", "2.1")) |> 
+  pointblank::col_vals_regex(
+    columns = c("integer_data"),
+    regex = "^[1-9]([0-9]+)?(.[0]+)?$",
+    na_pass = TRUE,
+  ) 
+  
+```
+
+```{r}
+#| label: positive integer check fail
+#| echo: true
+#| eval: true
+#| error: true
+
+data.frame(integer_data = c(-1, 0, 1, 2)) |> 
+  pointblank::col_vals_gt(
+    columns = c("integer_data"),
+    value = 0,
+    na_pass = TRUE,    
+  )
+  
+```
+
+:::
+
+::::
+
+
+## Check numeric in character
+
+Similarly, we can use the same functions [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [`pointblank::col_vals_gt`](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that the text are positive numbers.
+
+```{r}
+#| label: positive number in text check success
+#| echo: true
+#| eval: true
+#| error: true
+
+data.frame(numeric_data = c("0.140", "7.07E-2", "2", NA)) |> 
+  pointblank::col_vals_regex(
+    columns = c("numeric_data"),
+    regex = "^[0-9]+((.[0-9]+)?(E(-)?[0-9]+)?)?$",
+    na_pass = TRUE,
+  ) 
+  
+```
+
+```{r}
+#| label: positive number in text check fail
+#| echo: true
+#| eval: true
+#| error: true
+
+data.frame(numeric_data = c("not numeric", FALSE, "", 2)) |> 
+  pointblank::col_vals_regex(
+    columns = c("numeric_data"),
+    regex = "^[0-9]+((.[0-9]+)?(E(-)?[0-9]+)?)?$",
+    na_pass = TRUE,
+  ) 
+  
+```
+
+
+## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
+
+Continue with `sample_excel_attempt_3` which reads `text_integer_issue` and `text_numeric_issue` column as text.
+
+::: {.panel-tabset}
+
+### text_integer_issue
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: integer check
+#| echo: true
+#| eval: true
+
+integer_check_from_text <- sample_excel_attempt_3 |> 
+  dplyr::select(c("id","text_integer_issue")) |> 
+  pointblank::col_vals_regex(
+    columns = c("text_integer_issue"),
+    regex = "^[1-9]([0-9]+)?(.[0]+)?$",
+    na_pass = TRUE,
+  ) |> 
+  dplyr::mutate(
+    text_integer_issue = as.integer(.data[["text_integer_issue"]])
+  ) |> 
+  pointblank::col_vals_gt(
+    columns = c("text_integer_issue"),
+    value = 0,
+    na_pass = TRUE,    
+  ) |> 
+  dplyr::rename(
+    text_integer_fixed = "text_integer_issue"
+  )
+  
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: integer check print
+#| eval: true
+
+integer_check_from_text |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+  
+```
+
+:::
+
+::::
+
+### text_numeric_issue
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: numeric check
+#| echo: true
+#| eval: true
+
+numeric_check <- sample_excel_attempt_3 |> 
+  dplyr::select(c("id","text_numeric_issue")) |> 
+  pointblank::col_vals_regex(
+    columns = c("text_numeric_issue"),
+    regex = "^[0-9]+((.[0-9]+)?(E(-)?[0-9]+)?)?$",
+    na_pass = TRUE,
+  ) |> 
+  dplyr::mutate(
+    text_numeric_issue = as.numeric(.data[["text_numeric_issue"]])
+  ) |> 
+  pointblank::col_vals_gt(
+    columns = c("text_numeric_issue"),
+    value = 0,
+    na_pass = TRUE,    
+  ) |> 
+  dplyr::rename(
+    text_numeric_fixed = "text_numeric_issue"
+  )
+  
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: numeric check print
+#| eval: true
+
+numeric_check |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+  
+```
+
+:::
+
+::::
+
+:::
+
+## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+It may be necessary to check if a numeric column only has integers.
+
+We also cannot use [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) because the column is not in text.
+
+We create the function `is_integer_vector` that returns `FALSE` when at least one of its element is not an integer.
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: only integers in numeric vector check
+#| echo: true
+#| eval: true
+
+is_integer_value <- function(input_value,
+                             allow_na = FALSE) {
+
+  boolean_result <- FALSE
+
+  # When input value is NA
+  if (is.na(input_value)) {
+    if (isTRUE(allow_na)) {
+      boolean_result <- TRUE
+      return(boolean_result)
+    } else {
+      return(boolean_result)
+    }
+  }
+
+  # When input value is not numeric
+  if (isTRUE(!is.numeric(input_value))) {
+    return(boolean_result)
+  }
+
+  # When input value is numeric
+  boolean_result <- isTRUE(input_value %% 1 == 0)
+
+  return(boolean_result)
+}
+
+
+is_integer_vector <- function(input_vector,
+                              allow_na = FALSE) {
+
+  boolean_results <- input_vector |>
+    purrr::map_lgl(
+      .f = is_integer_value,
+      allow_na = allow_na
+    )
+  return(boolean_results)
+}
+
+
+```
+
+:::
+
+::::
+
+## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
+
+Similarly, we can use [`pointblank::col_vals_expr`](https://rstudio.github.io/pointblank/reference/col_vals_expr.html) to ensure that the numeric column has only integer using the self-made `is_integer_vector` function.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: integer check fail success
+#| echo: true
+#| eval: true
+
+integer_data <- data.frame(
+  integer_col = c(-1, 0, NA, 2.0000, 3)
+)
+
+integer_data |> 
+  pointblank::col_vals_expr(
+    expr = ~is_integer_vector(
+      input_vector = integer_data[["integer_col"]],
+      allow_na = TRUE)
+  )
+  
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: integer check fail 
+#| echo: true
+#| eval: true
+#| error: true
+
+non_integer_data <- data.frame(
+  non_integer_col = c(-1, 0, NA, 2.0000, 
+                      3.010, pi, exp(1)
+                     )
+) 
+
+non_integer_data |> 
+  pointblank::col_vals_expr(
+    expr = ~ is_integer_vector(
+      input_vector = non_integer_data[["non_integer_col"]],
+      allow_na = TRUE)
+  )
+  
+```
+
+:::
+
+::::
+
+## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
+
+Continue with `sample_excel_attempt_3` which reads `numeric_integer_issue` column as numeric. We apply the `is_integer_vector` function on the `numeric_integer_issue` column before converting the column to an integer column.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: integer check from numeric
+#| echo: true
+#| eval: true
+
+integer_check_from_numeric <- sample_excel_attempt_3 |> 
+  dplyr::select(c("id","numeric_integer_issue")) |> 
+  pointblank::col_vals_expr(
+    expr = ~ is_integer_vector(
+      input_vector = sample_excel_attempt_3[["numeric_integer_issue"]],
+      allow_na = TRUE)
+  ) |> 
+  dplyr::mutate(
+    numeric_integer_issue = as.integer(.data[["numeric_integer_issue"]]),
+  ) |> 
+  dplyr::rename(
+    numeric_integer_fixed = "numeric_integer_issue"
+  )
+  
+  
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: integer_check_from_numeric print
+#| eval: true
+
+integer_check_from_numeric |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+  
+```
+
+:::
+
+::::
+
+## [Does the columns in `one_or_zero_issue` only have values 0 or 1 ?]{.r-fit-text}
+
+Use [`pointblank::test_col_vals_in_set`](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to ensure that the column only contains values from a user-defined set.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: one or zero check success
+#| echo: true
+#| eval: true
+#| error: true
+
+data.frame(one_or_zero_data = c(0, NA, 1)) |> 
+  pointblank::col_vals_in_set(
+    columns = c("one_or_zero_data"),
+    set = c(NA, 0, 1)
+  ) 
+  
+```
+
+```{r}
+#| label: one or zero check fail
+#| echo: true
+#| eval: true
+#| error: true
+
+data.frame(one_or_zero_data = c(0, NA, 1, 2)) |> 
+  pointblank::col_vals_in_set(
+    columns = c("one_or_zero_data"),
+    set = c(NA, 0, 1)
+  ) 
+  
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: one or zero check
+#| echo: true
+#| eval: true
+
+one_or_zero_check <- sample_excel_attempt_3 |> 
+  dplyr::select(c("id","one_or_zero_issue")) |> 
+  pointblank::col_vals_in_set(
+    columns = c("one_or_zero_issue"),
+    set = c(NA, 0, 1)
+  ) |> 
+  dplyr::rename(
+    one_or_zero_fixed = "one_or_zero_issue"
+  )
+  
+  
+```
+
+```{r}
+#| label: one or zero check print
+#| eval: true
+
+one_or_zero_check |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+  
+  
+```
+
+:::
+
+::::
+
+## Fix date
+
+First, convert the date columns into a list of character, Date and logical vectors so that I preserve both the text and date format.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: col_type to list
+#| echo: true
+#| eval: true
+
+sample_excel_attempt_3 <- readxl::read_excel(
+  path = here::here("sample_excel.xlsx"),
+  sheet = "Sheet1",
+  col_types = c("text" , "list", 
+                "text", "text", "text", 
+                "numeric", "numeric")
+) |> 
+  pointblank::rows_distinct(columns = "id" )
+
+
+str(head(sample_excel_attempt_3$date_issue))
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: sample_excel_attempt_3 html
+#| eval: !expr out_type == "html"
+
+if (params$show_table && knitr::is_html_output()) {
+  sample_excel_attempt_3 |>
+    reactable::reactable(
+      filterable = TRUE,
+      defaultPageSize = 5,
+      paginationType = "jump",
+      style = list(fontSize = "1rem")
+    )
+}
+
+```
+
+:::
+
+:::
+
+::::
+
+## Fix date
+
+Next I create a function that convert dates in character vectors into `Date` objects, convert logical vector to `NA` and convert `Date` vectors into the date format that I want.
+
+```{r}
+#| label: convert_dmy_text_to_date
+#| echo: true
+#| eval: true
+
+convert_dmy_text_to_date <- function(input) {
+  if (length(class(input)) == 1) {
+    if (class(input) == "character") {
+      return(as.Date.character(lubridate::dmy(input)))
+    } else if (class(input) == "logical") {
+      return(NA)
+    }
+  }
+  return(lubridate::as_date(lubridate::ymd(input)))
+}
+
+```
+
+However, creating function can lead to unexpected warnings and errors. To view these issues, I use some functions from the collateral R package.
+
+## Fix date
+
+Use [`collateral::map_peacefully`](https://collateral.jamesgoldie.dev/reference/collateral_mappers) to capture function side effects using both [`purrr::safely()`](https://purrr.tidyverse.org/reference/safely.html) and [`purrr::quietly()`](https://purrr.tidyverse.org/reference/quietly.html).
+
+```{r}
+#| label: get fixed_date
+#| echo: true
+#| eval: true
+
+fixed_date <- sample_excel_attempt_3 |>
+  dplyr::select(c("id","date_issue")) |> 
+  dplyr::mutate(
+    converted_date_log = collateral::map_peacefully(
+      .x = .data[["date_issue"]],
+      .f = convert_dmy_text_to_date
+    ),
+    converted_date = purrr::map_vec(
+      .x = .data[["converted_date_log"]], 
+      .f = "result"
+    )
+  )
+
+print(head(fixed_date))
+```
+
+## Fix date
+
+Use [`collateral::has_warnings`](https://collateral.jamesgoldie.dev/reference/has) and [`collateral::has_errors`](https://collateral.jamesgoldie.dev/reference/has) to create logical columns which gives `TRUE` when there are warning or error messages. Use [`pointblank::test_col_vals_in_set`](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to obtain a single logical value.
+
+```{r}
+#| label: get collateral warnings and errors as logical
+#| echo: true
+#| eval: true
+
+fixed_date <- fixed_date |>
+  dplyr::mutate(
+    warning_check = collateral::has_warnings(.data[["converted_date_log"]]),
+    error_check = collateral::has_errors(.data[["converted_date_log"]])
+  )
+
+print(head(fixed_date))
+```
+
+```{r}
+#| label: check for date issues
+#| echo: true
+#| eval: true
+
+no_issue <- fixed_date |>
+  pointblank::test_col_vals_in_set(
+    columns = c("warning_check", "error_check"),
+    set = c(FALSE)    
+  )
+
+print(no_issue)
+```
+
+## Fix date
+
+Isolate rows with issues and output the warning and error messages.
+
+```{r}
+#| label: isolate issues
+#| echo: true
+#| eval: true
+#| output-location: column
+
+if (!isTRUE(no_issue)) {
+  fixed_date |>
+    dplyr::filter(
+      warning_check == TRUE | error_check == TRUE
+    ) |> 
+    dplyr::mutate(
+      warning_log = purrr::map(
+        .x = .data[["converted_date_log"]],
+        .f = "warnings",
+        .null = NA),
+      error_log = purrr::map(
+        .x = .data[["converted_date_log"]],
+        .f = "errors",
+        .null = NA)   
+    ) |> 
+    reactable::reactable(
+      style = list(fontSize = "1rem")
+    )
+}
+```
+
+## Fix weight
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Use [`tidyxl::xlsx_cells`](https://nacnudus.github.io/tidyxl/reference/xlsx_cells.html) to read the excel file in cells.
+
+```{r}
+#| label: read cells
+#| echo: true
+#| eval: true
+
+cells <- tidyxl::xlsx_cells(
+  path = here::here("sample_excel.xlsx"),
+  sheet = "Sheet1",
+  include_blank_cells = TRUE)
+
+```
+
+Observe that there is no indication of which row is green or black. We are only provided the `local_format_id` at the last column.
+
+:::
+
+::: {.column width="50%"}
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: read cells html
+#| eval: !expr out_type == "html"
+
+if (params$show_table && knitr::is_html_output()) {
+  cells |>
+    reactable::reactable(
+      filterable = TRUE,
+      defaultPageSize = 5,
+      paginationType = "jump",
+      style = list(fontSize = "1rem")
+    )
+}
+
+```
+
+:::
+
+:::
+
+::::
+
+## Fix weight
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Use [`tidyxl::xlsx_formats`](https://nacnudus.github.io/tidyxl/reference/xlsx_formats.html) to obtain the format information of each cells.
+
+```{r}
+#| label: read formats
+#| echo: true
+#| eval: true
+
+formats <- tidyxl::xlsx_formats(
+  path = here::here("sample_excel.xlsx")
+)
+
+```
+
+Here is a way to view all colours in Hex8 used in the excel file
+
+```{r}
+#| label: view all colours
+#| echo: true
+#| eval: true
+
+unique(formats$local$font$color$rgb)
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: print formats
+#| eval: true
+
+formats
+
+```
+
+:::
+
+::::
+
+
+## Fix weight
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Using green as the running example, first in excel, click on a cell with green font. Next, click on the drop down button beside the font colour button.
+
+![](images/font_dropdown.png){fig-alt="Figure showing where the drop down button beside the font colour button is." fig-align="center"}
+
+:::
+
+::: {.column width="50%"}
+
+This will give the following output. Next click on More Colors...
+
+![](images/more_colours.png){fig-alt="Figure showing where the More Colors... button is." fig-align="center"}
+
+:::
+
+::::
+
+## Fix weight
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Go to the Custom tab and extract the hex code saying #00B050 for green. 
+
+![](images/green_hex_code.png){fig-alt="Figure showing how to get the Hex code." fig-align="center"}
+
+:::
+
+::: {.column width="50%"}
+
+Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemecolor.com/sample?getcolor=00B050> in our running example) to find out what the Hex8 code is for the green font.
+
+![](images/green_hex8_code.png){fig-alt="Figure showing how to get the Hex8 code from www.schemecolor.com." fig-align="center"}
+
+:::
+
+::::
+
+## Fix weight
+
+Identify the `local_format_id` accordingly with the black and green Hex8 code as #FF000000 and #FF00B050 respectively.
+
+```{r}
+#| label: green font local format id 
+#| echo: true
+#| eval: true
+
+green_font_local_format_id <- which(formats$local$font$color$rgb == "FF00B050")
+green_font_local_format_id
+
+```
+
+```{r}
+#| label: black font local format id 
+#| echo: true
+#| eval: true
+
+black_font_local_format_id <- which(formats$local$font$color$rgb == "FF000000")
+black_font_local_format_id
+```
+
+Identify the column index of `colour_weight_black_in_pounds_green_in_kilograms`.
+
+```{r}
+#| label: weight column index
+#| echo: true
+#| eval: true
+
+weight_column_index <- cells |> 
+  dplyr::filter(
+    .data[["character"]] == "colour_weight \r\nBlack in pounds\r\nGreen in kilograms"
+  ) |> 
+  pointblank::row_count_match(count = 1) |> 
+  dplyr::pull(.data[["col"]])
+
+weight_column_index
+```
+
+## Fix weight
+
+With the column index and `local_format_id` identified, we can filter the `cells` data to isolate cells which contain the weight in pounds and kilogram.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: weight in pounds 
+#| echo: true
+#| eval: true
+
+weight_in_pounds <- cells |>
+  dplyr::filter(.data[["row"]] != 1) |> 
+  dplyr::filter(.data[["col"]] == weight_column_index) |> 
+  dplyr::filter(.data[["local_format_id"]] %in% black_font_local_format_id) |> 
+  pointblank::col_vals_in_set(columns = c("data_type"), set = c("numeric")) |>   
+  dplyr::filter(.data[["data_type"]] == "numeric") |>  
+  dplyr::select(c("row", "numeric")) |> 
+  dplyr::rename(weight_pounds = "numeric") |> 
+  dplyr::mutate(
+    weight_kg_converted = janitor::round_half_up(.data[["weight_pounds"]] / 2.2046, digits = 0)
+  )
+
+```
+
+```{r}
+#| label: weight pounds html
+#| code-fold: true
+
+weight_in_pounds |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: weight in kg
+#| echo: true
+#| eval: true
+
+weight_in_kg <- cells |>
+  dplyr::filter(.data[["row"]] != 1) |> 
+  dplyr::filter(.data[["col"]] == weight_column_index) |> 
+  dplyr::filter(.data[["local_format_id"]] %in% green_font_local_format_id) |> 
+  pointblank::col_vals_in_set(
+    columns = c("data_type"),
+    set = c("numeric")    
+  ) |>  
+  dplyr::filter(.data[["data_type"]] == "numeric") |>  
+  dplyr::select(c("row", "numeric")) |> 
+  dplyr::rename(weight_kg = "numeric")
+
+```
+
+```{r}
+#| label: weight in kg html
+
+weight_in_kg |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+
+
+```
+
+:::
+
+::::
+
+## Fix weight
+
+We combine the weight data together
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: combine
+#| echo: true
+#| eval: true
+
+id_column_index <- which(
+  colnames(sample_excel_attempt_3) == "id"
+)
+
+id_cells <- cells |>
+  dplyr::filter(.data[["row"]] != 1) |> 
+  dplyr::filter(.data[["col"]] == id_column_index) |>
+  pointblank::col_vals_in_set(
+    columns = c("data_type"),
+    set = c("character")
+  ) |> 
+  dplyr::select(c("row", "character")) |> 
+  dplyr::rename(id = "character") 
+
+fixed_weight <- id_cells |> 
+  dplyr::left_join(weight_in_pounds, 
+                   by = dplyr::join_by("row"),
+                   unmatched = "error",
+                   relationship = "one-to-one") |> 
+  dplyr::left_join(weight_in_kg, 
+                   by = dplyr::join_by("row"),
+                   unmatched = "error",
+                   relationship = "one-to-one") |> 
+  tidyr::unite(
+    col = "weight_fixed_kg",
+    c("weight_kg_converted",
+      "weight_kg"),
+    remove = TRUE,
+    na.rm = TRUE) |> 
+  dplyr::select(c("id", "weight_fixed_kg"))
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: fixed weight before html
+
+fixed_weight |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+
+
+```
+
+:::
+
+::::
