@@ -26,6 +26,8 @@ library(verbaliseR)
 out_type <- knitr::opts_chunk$get("rmarkdown.pandoc.to")
 ```
 
+# Formatted Cell in Excel {background-image="images/title.jpg" background-size="contain"}
+
 ## Formatted Cell in Excel
 
 Formatted cells are useful for clinicians to make highlight important information. They tend to be well received by people but not so for software.
@@ -61,6 +63,8 @@ The columns `text_integer_issue` and `text_numeric_issue` are numeric columns bu
 :::
 
 ::::
+
+# Read Data Attempt {background-image="images/title.jpg" background-size="contain"}
 
 ## Read Data Attempt 1
 
@@ -162,19 +166,49 @@ Bad news
 
 We try to read the formatted data indicating the right column types. This time it gives strange and intimidating warnings.
 
+:::: {.columns}
+
+::: {.column width="50%"}
+
 ```{r}
 #| label: read data attempt 2
 #| echo: true
+#| eval: false
+
+sample_excel_attempt_2 <- readxl::read_excel(
+  path = here::here("sample_excel.xlsx"),
+  sheet = "Sheet1",
+  col_types = c("text" , "date", 
+                "numeric", "numeric", 
+                "numeric", "numeric", 
+                "numeric")
+)
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: read data attempt 2 print
+#| echo: false
 #| warning: true
 
 sample_excel_attempt_2 <- readxl::read_excel(
   path = here::here("sample_excel.xlsx"),
   sheet = "Sheet1",
   col_types = c("text" , "date", 
-                "numeric", "numeric", "numeric", "numeric", "numeric")
+                "numeric", "numeric", 
+                "numeric", "numeric", 
+                "numeric")
 )
 
 ```
+
+:::
+
+::::
 
 ## Read Data Attempt 2
 
@@ -223,7 +257,7 @@ On the other hand, the other issues are not fully resolved.
 
 ::::
 
-## Read Data Attempt 2 Reflection
+## Reflection
 
 From these previous failed attempt, my colleagues start to ask these questions and lose confidence in R.
 
@@ -231,8 +265,12 @@ From these previous failed attempt, my colleagues start to ask these questions a
 - Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?
 - Does the columns in `numeric_integer_issue` only have integer values ?
 - Does the columns in `one_or_zero_issue` only have values 0 or 1 ?
+- Can we fix `date_issue` ?
+- Can we fix `colour_weight` ?
 
-Resort to manual fixing of formatted cells in excel sheets. However, we can't be doing this for hundreds of rows all the times, especially when the later version of the same data set is only going to get larger.
+Resort to manual fixing of formatted cells in excel sheets... 
+
+However, we can't be doing this for hundreds of rows all the times, especially when the later version of the same data set is only going to get larger.
 
 ## Read Data Attempt 3
 
@@ -258,6 +296,8 @@ sample_excel_attempt_3 <- readxl::read_excel(
 )
 
 ```
+
+# Does the `id` column only have unique values ? {background-image="images/title.jpg" background-size="contain"}
 
 ## Does the `id` column only have unique values ?
 
@@ -322,7 +362,9 @@ id_check |>
 
 ::::
 
-## Check integer in character
+# Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ? {background-image="images/title.jpg" background-size="contain"}
+
+## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
 :::: {.columns}
 
@@ -347,9 +389,9 @@ The warnings inform the user that it sees "54" and "33" in cells D3 and D7 respe
 
 It may be safer to check if the column truly contain only positive integers even though they are in text, rather than relying on long warning messages.
 
-## Check integer in character
+## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
-Use [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [`pointblank::col_vals_gt`](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that the text are positive integers.
+Use [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [`pointblank::col_vals_gt`](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that text in the column `text_integer_issue` are positive integers.
 
 :::: {.columns}
 
@@ -424,9 +466,9 @@ data.frame(integer_data = c(-1, 0, 1, 2)) |>
 ::::
 
 
-## Check numeric in character
+## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
-Similarly, we can use the same functions [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [`pointblank::col_vals_gt`](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that the text are positive numbers.
+Similarly, we can use the same functions [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [`pointblank::col_vals_gt`](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that the text in the column `text_numeric_issue` are positive numbers.
 
 ```{r}
 #| label: positive number in text check success
@@ -574,6 +616,8 @@ numeric_check |>
 ::::
 
 :::
+
+# Does the columns in `numeric_integer_issue` only have integer values ? {background-image="images/title.jpg" background-size="contain"}
 
 ## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
 
@@ -748,6 +792,8 @@ integer_check_from_numeric |>
 
 ::::
 
+# Does the columns in `one_or_zero_issue` only have values 0 or 1 ? {background-image="images/title.jpg" background-size="contain"}
+
 ## [Does the columns in `one_or_zero_issue` only have values 0 or 1 ?]{.r-fit-text}
 
 Use [`pointblank::test_col_vals_in_set`](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to ensure that the column only contains values from a user-defined set.
@@ -825,7 +871,9 @@ one_or_zero_check |>
 
 ::::
 
-## Fix date
+# Can we fix `date_issue` ? {background-image="images/title.jpg" background-size="contain"}
+
+## Can we fix `date_issue` ?
 
 First, convert the date columns into a list of character, Date and logical vectors so that I preserve both the text and date format.
 
@@ -880,7 +928,7 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::::
 
-## Fix date
+## Can we fix `date_issue` ?
 
 Next I create a function that convert dates in character vectors into `Date` objects, convert logical vector to `NA` and convert `Date` vectors into the date format that I want.
 
@@ -904,7 +952,7 @@ convert_dmy_text_to_date <- function(input) {
 
 However, creating function can lead to unexpected warnings and errors. To view these issues, I use some functions from the collateral R package.
 
-## Fix date
+## Can we fix `date_issue` ?
 
 Use [`collateral::map_peacefully`](https://collateral.jamesgoldie.dev/reference/collateral_mappers) to capture function side effects using both [`purrr::safely()`](https://purrr.tidyverse.org/reference/safely.html) and [`purrr::quietly()`](https://purrr.tidyverse.org/reference/quietly.html).
 
@@ -929,7 +977,7 @@ fixed_date <- sample_excel_attempt_3 |>
 print(head(fixed_date))
 ```
 
-## Fix date
+## Can we fix `date_issue` ?
 
 Use [`collateral::has_warnings`](https://collateral.jamesgoldie.dev/reference/has) and [`collateral::has_errors`](https://collateral.jamesgoldie.dev/reference/has) to create logical columns which gives `TRUE` when there are warning or error messages. Use [`pointblank::test_col_vals_in_set`](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to obtain a single logical value.
 
@@ -961,7 +1009,7 @@ no_issue <- fixed_date |>
 print(no_issue)
 ```
 
-## Fix date
+## Can we fix `date_issue` ?
 
 Isolate rows with issues and output the warning and error messages.
 
@@ -992,7 +1040,9 @@ if (!isTRUE(no_issue)) {
 }
 ```
 
-## Fix weight
+# Can we fix `colour_weight` ? {background-image="images/title.jpg" background-size="contain"}
+
+## Can we fix `colour_weight` ?
 
 :::: {.columns}
 
@@ -1042,7 +1092,7 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::::
 
-## Fix weight
+## Can we fix `colour_weight` ?
 
 :::: {.columns}
 
@@ -1089,7 +1139,7 @@ formats
 ::::
 
 
-## Fix weight
+## Can we fix `colour_weight` ?
 
 :::: {.columns}
 
@@ -1111,7 +1161,7 @@ This will give the following output. Next click on More Colors...
 
 ::::
 
-## Fix weight
+## Can we fix `colour_weight` ?
 
 :::: {.columns}
 
@@ -1133,7 +1183,7 @@ Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemec
 
 ::::
 
-## Fix weight
+## Can we fix `colour_weight` ?
 
 Identify the `local_format_id` accordingly with the black and green Hex8 code as #FF000000 and #FF00B050 respectively.
 
@@ -1173,7 +1223,7 @@ weight_column_index <- cells |>
 weight_column_index
 ```
 
-## Fix weight
+## Can we fix `colour_weight` ?
 
 With the column index and `local_format_id` identified, we can filter the `cells` data to isolate cells which contain the weight in pounds and kilogram.
 
@@ -1256,7 +1306,7 @@ weight_in_kg |>
 
 ::::
 
-## Fix weight
+## Can we fix `colour_weight` ?
 
 We combine the weight data together
 
