@@ -1,7 +1,7 @@
 ---
 title: Tackling Formatted Tabular Data from Excel
 subtitle: "`r verbaliseR::prettify_date('2024-07-10', uk_or_us = 'UK')`"
-author: Jeremy Selva [`r fontawesome::fa(name = "github", fill = "#273B8C")`](https://github.com/JauntyJJS) [`r fontawesome::fa(name = "linkedin", fill = "#273B8C")`](https://www.linkedin.com/in/jeremy-selva-085b9112a/) [`r fontawesome::fa(name = "link", fill = "#273B8C")`](https://jeremy-selva.netlify.app/) [`r fontawesome::fa(name = "twitter", fill = "#273B8C")`](https://twitter.com/JauntyJJS) <br> useR! 2024 [`r fontawesome::fa(name = "r-project", fill = "#273B8C")`](https://events.linuxfoundation.org/user/)
+author: Jeremy Selva [`r fontawesome::fa(name = "linkedin", fill = "#273B8C")`](https://www.linkedin.com/in/jeremy-selva-085b9112a/) <br> @JauntyJJS [`r fontawesome::fa(name = "github", fill = "#273B8C")`](https://github.com/JauntyJJS) [`r fontawesome::fa(name = "twitter", fill = "#273B8C")`](https://twitter.com/JauntyJJS) <br> *https://jeremy-selva.netlify.app* [`r fontawesome::fa(name = "link", fill = "#273B8C")`](https://jeremy-selva.netlify.app/) <br> For useR! 2024 [`r fontawesome::fa(name = "r-project", fill = "#273B8C")`](https://events.linuxfoundation.org/user/)
 format:
   revealjs:
     code-line-numbers: true
@@ -40,6 +40,13 @@ out_type <- knitr::opts_chunk$get("rmarkdown.pandoc.to")
 Formatted cells are useful for clinicians to make highlight important information. They tend to be well received by people but not so for software.
 
 ![](images/peak_view.png){fig-alt="A peak view of a formatted data set." fig-align="center"}
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## Formatted Cell in Excel
 
