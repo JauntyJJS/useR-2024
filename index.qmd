@@ -15,7 +15,7 @@ format:
     highlight-style: ayu-mirage
     theme: [custom.scss]
 title-slide-attributes:
-    data-background-image: "images/title.JPG"
+    data-background-image: images/title.jpg
     data-background-size: contain
     data-background-opacity: "1"
 params:
