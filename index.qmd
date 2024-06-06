@@ -54,6 +54,13 @@ The column `date_issue` has two format. One in General and the other in Date.
 
 ![](images/date_forms.png){fig-alt="A column named date_issue with some Excel cells formatted as General and some as Date." fig-align="center"}
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Formatted Cell in Excel
 
 :::: {.columns}
@@ -78,6 +85,13 @@ The columns `text_integer_issue` and `text_numeric_issue` are numeric columns bu
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 # Read Data Attempt {background-image="images/title.jpg" background-size="contain"}
 
 ## Read Data Attempt 1
@@ -96,6 +110,12 @@ sample_excel_attempt_1 <- readxl::read_excel(
 ```
 
 ![](images/peak_view.png){fig-alt="A peak view of the data set used." fig-align="center"}
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## Read Data Attempt 1
 
@@ -140,6 +160,13 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Read Data Attempt 1
 
 :::: {.columns}
@@ -175,6 +202,13 @@ Bad news
 :::
 
 ::::
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## Read Data Attempt 2
 
@@ -224,6 +258,13 @@ sample_excel_attempt_2 <- readxl::read_excel(
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Read Data Attempt 2
 
 :::: {.columns}
@@ -271,6 +312,13 @@ On the other hand, the other issues are not fully resolved.
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Reflection
 
 From these previous failed attempt, my colleagues start to ask these questions and lose confidence in R.
@@ -285,6 +333,13 @@ From these previous failed attempt, my colleagues start to ask these questions a
 Resort to manual fixing of formatted cells in excel sheets... 
 
 However, we can't be doing this for hundreds of rows all the times, especially when the later version of the same data set is only going to get larger.
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## Read Data Attempt 3
 
@@ -311,11 +366,18 @@ sample_excel_attempt_3 <- readxl::read_excel(
 
 ```
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 # Does the `id` column only have unique values ? {background-image="images/title.jpg" background-size="contain"}
 
 ## Does the `id` column only have unique values ?
 
-Use [`pointblank::rows_distinct`](https://rstudio.github.io/pointblank/reference/rows_distinct.html) to validate columns that needs to have unique values.
+Use [***pointblank::rows_distinct***](https://rstudio.github.io/pointblank/reference/rows_distinct.html) to validate columns that needs to have unique values.
 
 :::: {.columns}
 
@@ -376,6 +438,13 @@ id_check |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 # Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ? {background-image="images/title.jpg" background-size="contain"}
 
 ## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
@@ -403,9 +472,16 @@ The warnings inform the user that it sees "54" and "33" in cells D3 and D7 respe
 
 It may be safer to check if the column truly contain only positive integers even though they are in text, rather than relying on long warning messages.
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
-Use [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [`pointblank::col_vals_gt`](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that text in the column `text_integer_issue` are positive integers.
+Use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [***pointblank::col_vals_gt***](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that text in the column `text_integer_issue` are positive integers.
 
 :::: {.columns}
 
@@ -479,10 +555,16 @@ data.frame(integer_data = c(-1, 0, 1, 2)) |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
-Similarly, we can use the same functions [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [`pointblank::col_vals_gt`](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that the text in the column `text_numeric_issue` are positive numbers.
+Similarly, we can use the same functions [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [***pointblank::col_vals_gt***](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that the text in the column `text_numeric_issue` are positive numbers.
 
 ```{r}
 #| label: positive number in text check success
@@ -514,6 +596,12 @@ data.frame(numeric_data = c("not numeric", FALSE, "", 2)) |>
   
 ```
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
@@ -575,6 +663,13 @@ integer_check_from_text |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ### text_numeric_issue
 
 :::: {.columns}
@@ -631,6 +726,13 @@ numeric_check |>
 
 :::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 # Does the columns in `numeric_integer_issue` only have integer values ? {background-image="images/title.jpg" background-size="contain"}
 
 ## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
@@ -641,7 +743,7 @@ numeric_check |>
 
 It may be necessary to check if a numeric column only has integers.
 
-We also cannot use [`pointblank::col_vals_regex`](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) because the column is not in text.
+We also cannot use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) because the column is not in text.
 
 We create the function `is_integer_vector` that returns `FALSE` when at least one of its element is not an integer.
 
@@ -699,9 +801,16 @@ is_integer_vector <- function(input_vector,
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
 
-Similarly, we can use [`pointblank::col_vals_expr`](https://rstudio.github.io/pointblank/reference/col_vals_expr.html) to ensure that the numeric column has only integer using the self-made `is_integer_vector` function.
+Similarly, we can use [***pointblank::col_vals_expr***](https://rstudio.github.io/pointblank/reference/col_vals_expr.html) to ensure that the numeric column has only integer using the self-made `is_integer_vector` function.
 
 :::: {.columns}
 
@@ -753,6 +862,13 @@ non_integer_data |>
 :::
 
 ::::
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
 
@@ -806,11 +922,18 @@ integer_check_from_numeric |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 # Does the columns in `one_or_zero_issue` only have values 0 or 1 ? {background-image="images/title.jpg" background-size="contain"}
 
 ## [Does the columns in `one_or_zero_issue` only have values 0 or 1 ?]{.r-fit-text}
 
-Use [`pointblank::test_col_vals_in_set`](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to ensure that the column only contains values from a user-defined set.
+Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to ensure that the column only contains values from a user-defined set.
 
 :::: {.columns}
 
@@ -885,6 +1008,13 @@ one_or_zero_check |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 # Can we fix `date_issue` ? {background-image="images/title.jpg" background-size="contain"}
 
 ## Can we fix `date_issue` ?
@@ -942,6 +1072,13 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Can we fix `date_issue` ?
 
 Next I create a function that convert dates in character vectors into `Date` objects, convert logical vector to `NA` and convert `Date` vectors into the date format that I want.
@@ -966,9 +1103,16 @@ convert_dmy_text_to_date <- function(input) {
 
 However, creating function can lead to unexpected warnings and errors. To view these issues, I use some functions from the collateral R package.
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Can we fix `date_issue` ?
 
-Use [`collateral::map_peacefully`](https://collateral.jamesgoldie.dev/reference/collateral_mappers) to capture function side effects using both [`purrr::safely()`](https://purrr.tidyverse.org/reference/safely.html) and [`purrr::quietly()`](https://purrr.tidyverse.org/reference/quietly.html).
+Use [***collateral::map_peacefully***](https://collateral.jamesgoldie.dev/reference/collateral_mappers) to capture function side effects using both [***purrr::safely()***](https://purrr.tidyverse.org/reference/safely.html) and [***purrr::quietly()***](https://purrr.tidyverse.org/reference/quietly.html).
 
 ```{r}
 #| label: get fixed_date
@@ -991,9 +1135,16 @@ fixed_date <- sample_excel_attempt_3 |>
 print(head(fixed_date))
 ```
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Can we fix `date_issue` ?
 
-Use [`collateral::has_warnings`](https://collateral.jamesgoldie.dev/reference/has) and [`collateral::has_errors`](https://collateral.jamesgoldie.dev/reference/has) to create logical columns which gives `TRUE` when there are warning or error messages. Use [`pointblank::test_col_vals_in_set`](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to obtain a single logical value.
+Use [***collateral::has_warnings***](https://collateral.jamesgoldie.dev/reference/has) and [***collateral::has_errors***](https://collateral.jamesgoldie.dev/reference/has) to create logical columns which gives `TRUE` when there are warning or error messages. Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to obtain a single logical value.
 
 ```{r}
 #| label: get collateral warnings and errors as logical
@@ -1022,6 +1173,13 @@ no_issue <- fixed_date |>
 
 print(no_issue)
 ```
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## Can we fix `date_issue` ?
 
@@ -1054,6 +1212,13 @@ if (!isTRUE(no_issue)) {
 }
 ```
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 # Can we fix `colour_weight` ? {background-image="images/title.jpg" background-size="contain"}
 
 ## Can we fix `colour_weight` ?
@@ -1062,7 +1227,7 @@ if (!isTRUE(no_issue)) {
 
 ::: {.column width="50%"}
 
-Use [`tidyxl::xlsx_cells`](https://nacnudus.github.io/tidyxl/reference/xlsx_cells.html) to read the excel file in cells.
+Use [***tidyxl::xlsx_cells***](https://nacnudus.github.io/tidyxl/reference/xlsx_cells.html) to read the excel file in cells.
 
 ```{r}
 #| label: read cells
@@ -1106,13 +1271,20 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Can we fix `colour_weight` ?
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-Use [`tidyxl::xlsx_formats`](https://nacnudus.github.io/tidyxl/reference/xlsx_formats.html) to obtain the format information of each cells.
+Use [***tidyxl::xlsx_formats***](https://nacnudus.github.io/tidyxl/reference/xlsx_formats.html) to obtain the format information of each cells.
 
 ```{r}
 #| label: read formats
@@ -1152,6 +1324,12 @@ formats
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## Can we fix `colour_weight` ?
 
@@ -1175,6 +1353,13 @@ This will give the following output. Next click on More Colors...
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Can we fix `colour_weight` ?
 
 :::: {.columns}
@@ -1196,6 +1381,13 @@ Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemec
 :::
 
 ::::
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## Can we fix `colour_weight` ?
 
@@ -1236,6 +1428,13 @@ weight_column_index <- cells |>
 
 weight_column_index
 ```
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
 
 ## Can we fix `colour_weight` ?
 
@@ -1320,6 +1519,13 @@ weight_in_kg |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 ## Can we fix `colour_weight` ?
 
 We combine the weight data together
@@ -1387,3 +1593,10 @@ fixed_weight |>
 :::
 
 ::::
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
