@@ -1,5 +1,7 @@
 project:
   title: "useR-2024"
+execute:
+  freeze: auto
 
 
 
