@@ -39,6 +39,8 @@ out_type <- knitr::opts_chunk$get("rmarkdown.pandoc.to")
 
 Formatted cells are useful for clinicians to make highlight important information. They tend to be well received by people but not so for software.
 
+Here is one that I have made called [sample_excel.xlsx](https://raw.githubusercontent.com/JauntyJJS/useR-2024/main//sample_excel.xlsx).
+
 ![](images/peak_view.png){fig-alt="A peak view of a formatted data set." fig-align="center"}
 
 ::: footer
@@ -50,9 +52,34 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Formatted Cell in Excel
 
-The column `date_issue` has two format. One in General and the other in Date.
+The column `date_issue` has two format.
 
-![](images/date_forms.png){fig-alt="A column named date_issue with some Excel cells formatted as General and some as Date." fig-align="center"}
+:::: {.columns}
+
+::: {.column width="50%"}
+
+:::{.fragment}
+
+One format is in **General**
+
+![](images/date_format_as_general.png){fig-alt="A column named date_issue with some Excel cells formatted as General." fig-align="center"}
+:::
+
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment}
+
+The other format is in **Date**
+
+![](images/date_format_as_date.png){fig-alt="A column named date_issue with some Excel cells formatted as Date." fig-align="center"}
+
+:::
+
+:::
+
+::::
 
 ::: footer
 
@@ -67,20 +94,31 @@ https://jauntyjjs.github.io/useR-2024
 
 ::: {.column width="50%"}
 
+:::{.fragment}
+
 The column `colour_weight` has two colour format. 
 
--  Cells in black are weight in pounds
--  Cells in green are weight in kilogram
+:::
+
+:::{.fragment}
+
+-  Cells in **black** are weight in pounds
+-  Cells in [**green**]{style="color: #00B050"} are weight in kilogram
 
 ![](images/colour_weights.png){fig-alt="A column named colour_weight with some Excel cells in black font for weight in pounds and in green font for weight in kilogram." fig-align="center"}
+:::
 
 :::
 
 ::: {.column width="50%"}
 
-The columns `text_integer_issue` and `text_numeric_issue` are numeric columns but some cells were formatted as text. These cells are indicated by the green triangle.
+:::{.fragment}
+
+The columns `text_integer_issue` and `text_numeric_issue` are numeric columns but some cells were formatted as text. These cells are indicated by the [**green**]{style="color: #017d01"} triangle.
 
 ![](images/text_in_numeric.png){fig-alt="Two columns named text_integer_issue and text_numeric_issue have some cells with a green triangle to indicate that the cells were formatted as text instead of numeric." fig-align="center"}
+:::
+
 :::
 
 ::::
@@ -92,7 +130,38 @@ https://jauntyjjs.github.io/useR-2024
 
 :::
 
-# Read Data Attempt {background-image="images/title.jpg" background-size="contain"}
+## Formatted Cell in Excel
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+The columns `numeric_integer_issue` and `one_or_zero_issue` are numeric columns.
+
+::: {.incremental}
+
+-  `numeric_integer_issue` has only positive integer values
+-  `one_or_zero_issue` has only values 0 and 1 but has missing values on the first few hundred rows
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](images/numeric_columns.png){fig-alt="Two columns named numeric_integer_issue which has only positive integer values and one_or_zero_issue which has only values 0 and 1 but has missing values on the first few hundred rows." fig-align="center"}
+:::
+
+::::
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
+# Read Data Attempts {background-image="images/title.jpg" background-size="contain"}
 
 ## Read Data Attempt 1
 
@@ -110,6 +179,7 @@ sample_excel_attempt_1 <- readxl::read_excel(
 ```
 
 ![](images/peak_view.png){fig-alt="A peak view of the data set used." fig-align="center"}
+
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
@@ -383,6 +453,8 @@ Use [***pointblank::rows_distinct***](https://rstudio.github.io/pointblank/refer
 
 ::: {.column width="50%"}
 
+::: {.fragment}
+
 ```{r}
 #| label: rows_distinct good example
 #| echo: true
@@ -394,16 +466,23 @@ data.frame(id = c("ID_01", "ID_02")) |>
 
 ```
 
+:::
+
+::: {.fragment}
+
 ```{r}
 #| label: rows_distinct bad example
 #| echo: true
 #| eval: true
 #| error: true
+#| output-location: fragment
 
 data.frame(id = c("ID_01", "ID_02", "ID_01")) |> 
   pointblank::rows_distinct(columns = "id" )
 
 ```
+
+:::
 
 :::
 
