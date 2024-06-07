@@ -193,6 +193,8 @@ https://jauntyjjs.github.io/useR-2024
 
 ::: {.column width="50%"}
 
+We have the following output
+
 ::: {.content-visible when-format="html"}
 
 ```{r}
@@ -203,7 +205,7 @@ if (params$show_table && knitr::is_html_output()) {
   sample_excel_attempt_1 |>
     reactable::reactable(
       filterable = TRUE,
-      defaultPageSize = 5,
+      defaultPageSize = 8,
       paginationType = "jump",
       style = list(fontSize = "1rem"),
     )
@@ -221,10 +223,15 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::: {.column width="45%"}
 
+:::{.fragment fragment-index=1}
 -  `date_issue`: those formatted as Date have been turned to numbers
+:::
+:::{.fragment fragment-index=2}
 -  `colour_weight`: different colour inputs not differentiated
-
-![](images/date_format_as_date.png){fig-alt="A peak view of the data set used." fig-align="center"}
+:::
+:::{.fragment fragment-index=1}
+![](images/date_format_as_date.png){fig-alt="A column named date_issue with some Excel cells formatted as Date." fig-align="center" width=90%}
+:::
 
 :::
 
@@ -259,15 +266,23 @@ str(sample_excel_attempt_1)
 
 ::: {.column width="45%"}
 
-Good news
+:::{.fragment}
+
+[**Good news**]{style="font-size: 150%;"}
 
 -  `numeric_integer_issue`: column is read correctly as numeric
 
-Bad news
+:::
+
+:::{.fragment}
+
+[**Bad news**]{style="font-size: 150%;"}
 
 -  `text_integer_issue`: column turned to text
 -  `text_numeric_issue`: column turned to text
 -  `one_or_zero_issue`: column turned to logical
+
+:::
 
 :::
 
@@ -282,11 +297,23 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Read Data Attempt 2
 
-We try to read the formatted data indicating the right column types. This time it gives strange and intimidating warnings.
+When we read the formatted data indicating the column types, it gives intimidating warnings.
 
 :::: {.columns}
 
 ::: {.column width="50%"}
+
+:::{.fragment}
+
+::: {style="font-size: 80%;"}
+
+- `id` as "text"
+- `date_issue` as "date"
+- `colour_weight` as "numeric"
+- `text_integer_issue` and `text_numeric_issue` as "numeric"
+- `numeric_integer_issue` and `one_or_zero_issue` as "numeric"
+
+:::
 
 ```{r}
 #| label: read data attempt 2
@@ -306,7 +333,11 @@ sample_excel_attempt_2 <- readxl::read_excel(
 
 :::
 
+:::
+
 ::: {.column width="50%"}
+
+:::{.fragment}
 
 ```{r}
 #| label: read data attempt 2 print
@@ -326,6 +357,8 @@ sample_excel_attempt_2 <- readxl::read_excel(
 
 :::
 
+:::
+
 ::::
 
 ::: footer
@@ -340,6 +373,8 @@ https://jauntyjjs.github.io/useR-2024
 :::: {.columns}
 
 ::: {.column width="50%"}
+
+We have the following output
 
 ::: {.content-visible when-format="html"}
 
@@ -369,14 +404,23 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::: {.column width="45%"}
 
-The good news is that
+:::{.fragment}
 
--  `one_or_zero_issue`: column is resolved
+[**Good news**]{style="font-size: 150%;"}
 
-On the other hand, the other issues are not fully resolved.
+-  `numeric_integer_issue`: column is read correctly as numeric
+-  `one_or_zero_issue`: column is read correctly as numeric
+
+:::
+
+:::{.fragment}
+
+[**Bad news**]{style="font-size: 150%;"}
 
 -  `date_issue`: many rows turn to blank
 -  `colour_weight`: different colour inputs not differentiated
+
+:::
 
 :::
 
@@ -391,7 +435,7 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Reflection
 
-From these previous failed attempt, my colleagues start to ask these questions and lose confidence in R.
+From these previous failed attempt, we start to ask these questions and lose confidence in R.
 
 - Does the `id` column only have unique values ?
 - Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?
@@ -400,9 +444,39 @@ From these previous failed attempt, my colleagues start to ask these questions a
 - Can we fix `date_issue` ?
 - Can we fix `colour_weight` ?
 
-Resort to manual fixing of formatted cells in excel sheets... 
+::: footer
 
-However, we can't be doing this for hundreds of rows all the times, especially when the later version of the same data set is only going to get larger.
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
+## Reflection
+
+We can resort to manual checking/fixing of formatted cells in excel sheets. However, we can't be doing this for hundreds of rows all the times. 
+
+:::{.fragment fragment-index=1}
+
+Thankfully, there are some R packages ([***pointblank***](https://rstudio.github.io/pointblank/), [***collateral***](https://collateral.jamesgoldie.dev/), [***tidyxl***](https://nacnudus.github.io/tidyxl/index.html)) that can help
+
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Wind-up businessman images by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working)](images/manual_cleaning.jpg){fig-alt="Image of a businessman cleaning up."}
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment fragment-index=1}
+
+![](images/packages.png){fig-alt="Image of R pacakges pointblank, collateral and tidyxl."}
+:::
+
+:::
+
+::::
 
 ::: footer
 
@@ -488,6 +562,8 @@ data.frame(id = c("ID_01", "ID_02", "ID_01")) |>
 
 ::: {.column width="50%"}
 
+::: {.fragment}
+
 ```{r}
 #| label: rows_distinct data example
 #| echo: true
@@ -515,6 +591,8 @@ id_check |>
 
 :::
 
+:::
+
 ::::
 
 ::: footer
@@ -530,9 +608,9 @@ https://jauntyjjs.github.io/useR-2024
 
 :::: {.columns}
 
-::: {.column width="70%"}
+::: {.column width="80%"}
 
-When we tried to read the excel data earlier (sample_excel_attempt_2) using `col_types` as numeric for the `text_integer_issue` column, we received some warning messages in relation to this column.
+In sample_excel_attempt_2, when we read `text_integer_issue` as a numeric column, we received some warning message..
 
 -  Warning: Coercing text to numeric in D3 / R3C4: '54'
 -  Warning: Coercing text to numeric in D7 / R7C4: '33'
@@ -541,15 +619,22 @@ The warnings inform the user that it sees "54" and "33" in cells D3 and D7 respe
 
 :::
 
-::: {.column width="30%"}
+::: {.column width="20%"}
 
-![](images/text_integer_issue.png){fig-alt="Image showing 54 and 33 in cells D3 and D7 respectively as text." fig-align="center"}
+![](images/text_integer_issue.png){fig-alt="Image showing 54 and 33 in cells D3 and D7 respectively as text." fig-align="center" width="90%"}
 
 :::
 
 ::::
 
-It may be safer to check if the column truly contain only positive integers even though they are in text, rather than relying on long warning messages.
+::: {.fragment}
+
+::: {.callout-important}
+## [Important]{style="font-size: 150%;"}
+[It may be safer to check if the column truly contain only positive integers even though they are in text, rather than relying on long warning messages.]{style="font-size: 150%;"}
+:::
+
+:::
 
 ::: footer
 
@@ -566,6 +651,8 @@ Use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/refe
 
 ::: {.column width="50%"}
 
+:::{.fragment fragment-index=1}
+
 ```{r}
 #| label: positive integer in text check success
 #| echo: true
@@ -580,6 +667,10 @@ data.frame(integer_data = c("1", "2.0000", "59", NA)) |>
   ) 
   
 ```
+
+:::
+
+:::{.fragment fragment-index=3}
 
 ```{r}
 #| label: positive integer check success
@@ -598,7 +689,11 @@ data.frame(integer_data = c(1, 2, 3, NA)) |>
 
 :::
 
+:::
+
 ::: {.column width="50%"}
+
+:::{.fragment fragment-index=2}
 
 ```{r}
 #| label: positive integer in text check fail
@@ -614,6 +709,10 @@ data.frame(integer_data = c("1", "2.0000", "2.1")) |>
   ) 
   
 ```
+
+:::
+
+:::{.fragment fragment-index=4}
 
 ```{r}
 #| label: positive integer check fail
@@ -632,6 +731,8 @@ data.frame(integer_data = c(-1, 0, 1, 2)) |>
 
 :::
 
+:::
+
 ::::
 
 ::: footer
@@ -644,6 +745,8 @@ https://jauntyjjs.github.io/useR-2024
 ## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
 Similarly, we can use the same functions [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [***pointblank::col_vals_gt***](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that the text in the column `text_numeric_issue` are positive numbers.
+
+::: {.fragment}
 
 ```{r}
 #| label: positive number in text check success
@@ -660,6 +763,10 @@ data.frame(numeric_data = c("0.140", "7.07E-2", "2", NA)) |>
   
 ```
 
+:::
+
+::: {.fragment}
+
 ```{r}
 #| label: positive number in text check fail
 #| echo: true
@@ -674,6 +781,8 @@ data.frame(numeric_data = c("not numeric", FALSE, "", 2)) |>
   ) 
   
 ```
+
+:::
 
 ::: footer
 
@@ -822,18 +931,25 @@ https://jauntyjjs.github.io/useR-2024
 
 It may be necessary to check if a numeric column only has integers.
 
-We also cannot use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) because the column is not in text.
+However, we also cannot use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) because the column is not read in text.
+
+:::{.fragment fragment-index=1}
 
 We create the function `is_integer_vector` that returns `FALSE` when at least one of its element is not an integer.
 
 :::
 
+:::
+
 ::: {.column width="50%"}
+
+:::{.fragment fragment-index=1}
 
 ```{r}
 #| label: only integers in numeric vector check
 #| echo: true
 #| eval: true
+#| code-line-numbers: "|28-37"
 
 is_integer_value <- function(input_value,
                              allow_na = FALSE) {
@@ -878,6 +994,8 @@ is_integer_vector <- function(input_vector,
 
 :::
 
+:::
+
 ::::
 
 ::: footer
@@ -894,6 +1012,8 @@ Similarly, we can use [***pointblank::col_vals_expr***](https://rstudio.github.i
 :::: {.columns}
 
 ::: {.column width="50%"}
+
+::: {.fragment}
 
 ```{r}
 #| label: integer check fail success
@@ -915,7 +1035,11 @@ integer_data |>
 
 :::
 
+:::
+
 ::: {.column width="50%"}
+
+::: {.fragment}
 
 ```{r}
 #| label: integer check fail 
@@ -937,6 +1061,8 @@ non_integer_data |>
   )
   
 ```
+
+:::
 
 :::
 
@@ -1012,11 +1138,13 @@ https://jauntyjjs.github.io/useR-2024
 
 ## [Does the columns in `one_or_zero_issue` only have values 0 or 1 ?]{.r-fit-text}
 
-Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to ensure that the column only contains values from a user-defined set.
+[Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to ensure that the column only contains values from a user-defined set.]{style="font-size: 90%;"}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
+
+::: {.fragment}
 
 ```{r}
 #| label: one or zero check success
@@ -1031,6 +1159,10 @@ data.frame(one_or_zero_data = c(0, NA, 1)) |>
   ) 
   
 ```
+
+:::
+
+::: {.fragment}
 
 ```{r}
 #| label: one or zero check fail
@@ -1048,7 +1180,11 @@ data.frame(one_or_zero_data = c(0, NA, 1, 2)) |>
 
 :::
 
+:::
+
 ::: {.column width="50%"}
+
+::: {.fragment}
 
 ```{r}
 #| label: one or zero check
@@ -1085,6 +1221,8 @@ one_or_zero_check |>
 
 :::
 
+:::
+
 ::::
 
 ::: footer
@@ -1098,11 +1236,13 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Can we fix `date_issue` ?
 
-First, convert the date columns into a list of character, Date and logical vectors so that I preserve both the text and date format.
+First, convert the date columns into a list of character, `Date` and logical vectors so that I preserve both the text and date format.
 
 :::: {.columns}
 
 ::: {.column width="50%"}
+
+::: {.fragment}
 
 ```{r}
 #| label: col_type to list
@@ -1125,7 +1265,11 @@ str(head(sample_excel_attempt_3$date_issue))
 
 :::
 
+:::
+
 ::: {.column width="50%"}
+
+::: {.fragment}
 
 ::: {.content-visible when-format="html"}
 
@@ -1144,6 +1288,8 @@ if (params$show_table && knitr::is_html_output()) {
 }
 
 ```
+
+:::
 
 :::
 
@@ -1180,7 +1326,17 @@ convert_dmy_text_to_date <- function(input) {
 
 ```
 
-However, creating function can lead to unexpected warnings and errors. To view these issues, I use some functions from the collateral R package.
+::: {.fragment}
+
+::: {.callout-tip}
+## [Tip]{style="font-size: 150%;"}
+[However, creating function can lead to unexpected warnings and errors. To view these issues, I use some functions from the [***collateral***](https://collateral.jamesgoldie.dev/) R package.]{style="font-size: 150%;"}
+:::
+
+-  [***collateral::map_peacefully***](https://collateral.jamesgoldie.dev/reference/collateral_mappers)
+-  [***collateral::has_warnings***](https://collateral.jamesgoldie.dev/reference/has) and [***collateral::has_errors***](https://collateral.jamesgoldie.dev/reference/has)
+
+:::
 
 ::: footer
 
@@ -1193,10 +1349,13 @@ https://jauntyjjs.github.io/useR-2024
 
 Use [***collateral::map_peacefully***](https://collateral.jamesgoldie.dev/reference/collateral_mappers) to capture function side effects using both [***purrr::safely()***](https://purrr.tidyverse.org/reference/safely.html) and [***purrr::quietly()***](https://purrr.tidyverse.org/reference/quietly.html).
 
+::: {.fragment}
+
 ```{r}
 #| label: get fixed_date
 #| echo: true
 #| eval: true
+#| output-location: fragment
 
 fixed_date <- sample_excel_attempt_3 |>
   dplyr::select(c("id","date_issue")) |> 
@@ -1214,6 +1373,8 @@ fixed_date <- sample_excel_attempt_3 |>
 print(head(fixed_date))
 ```
 
+:::
+
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
@@ -1223,7 +1384,9 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Can we fix `date_issue` ?
 
-Use [***collateral::has_warnings***](https://collateral.jamesgoldie.dev/reference/has) and [***collateral::has_errors***](https://collateral.jamesgoldie.dev/reference/has) to create logical columns which gives `TRUE` when there are warning or error messages. Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to obtain a single logical value.
+[Use [***collateral::has_warnings***](https://collateral.jamesgoldie.dev/reference/has) and [***collateral::has_errors***](https://collateral.jamesgoldie.dev/reference/has) to create logical columns which gives `TRUE` when there are warning or error messages.]{.fragment fragment-index=1} [Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to obtain a single logical value.]{.fragment fragment-index=2}
+
+::: {.fragment fragment-index=1}
 
 ```{r}
 #| label: get collateral warnings and errors as logical
@@ -1239,6 +1402,10 @@ fixed_date <- fixed_date |>
 print(head(fixed_date))
 ```
 
+:::
+
+::: {.fragment fragment-index=2}
+
 ```{r}
 #| label: check for date issues
 #| echo: true
@@ -1252,6 +1419,8 @@ no_issue <- fixed_date |>
 
 print(no_issue)
 ```
+
+:::
 
 ::: footer
 
@@ -1268,6 +1437,7 @@ Isolate rows with issues and output the warning and error messages.
 #| label: isolate issues
 #| echo: true
 #| eval: true
+#| code-line-numbers: "|6-15"
 #| output-location: column
 
 if (!isTRUE(no_issue)) {
@@ -1302,11 +1472,11 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Can we fix `colour_weight` ?
 
+Use [***tidyxl::xlsx_cells***](https://nacnudus.github.io/tidyxl/reference/xlsx_cells.html) to read the excel file in cells.
+
 :::: {.columns}
 
 ::: {.column width="50%"}
-
-Use [***tidyxl::xlsx_cells***](https://nacnudus.github.io/tidyxl/reference/xlsx_cells.html) to read the excel file in cells.
 
 ```{r}
 #| label: read cells
@@ -1320,11 +1490,19 @@ cells <- tidyxl::xlsx_cells(
 
 ```
 
-Observe that there is no indication of which row is green or black. We are only provided the `local_format_id` at the last column.
+::: {.fragment}
+Observe that there is no indication of which row is [**green**]{style="color: #00B050"} or **black**. 
+
+We are only provided the `local_format_id` labelled 1 to 15 at the last column.
+:::
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="45%"}
 
 ::: {.content-visible when-format="html"}
 
@@ -1359,11 +1537,11 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Can we fix `colour_weight` ?
 
+Use [***tidyxl::xlsx_formats***](https://nacnudus.github.io/tidyxl/reference/xlsx_formats.html) to obtain the format information of the excel file in a list.
+
 :::: {.columns}
 
 ::: {.column width="50%"}
-
-Use [***tidyxl::xlsx_formats***](https://nacnudus.github.io/tidyxl/reference/xlsx_formats.html) to obtain the format information of each cells.
 
 ```{r}
 #| label: read formats
@@ -1376,16 +1554,28 @@ formats <- tidyxl::xlsx_formats(
 
 ```
 
-Here is a way to view all colours in Hex8 used in the excel file
+::: {.fragment}
+
+Here is a way to view all colours in Hex8 used for all 15 `local_format_id`
 
 ```{r}
 #| label: view all colours
 #| echo: true
 #| eval: true
 
+print(formats$local$font$color$rgb)
+
 unique(formats$local$font$color$rgb)
 
 ```
+
+:::
+
+::: {.fragment}
+
+We need to identify which one is **black** and [**green**]{style="color: #00B050"}.
+
+:::
 
 :::
 
@@ -1416,17 +1606,24 @@ https://jauntyjjs.github.io/useR-2024
 
 ::: {.column width="50%"}
 
-Using green as the running example, first in excel, click on a cell with green font. Next, click on the drop down button beside the font colour button.
+::: {.fragment}
+
+Using green as the running example, first in excel, click on a cell with [**green**]{style="color: #00B050"} font. Next, click on the drop down button beside the font colour button.
 
 ![](images/font_dropdown.png){fig-alt="Figure showing where the drop down button beside the font colour button is." fig-align="center"}
 
 :::
 
+:::
+
 ::: {.column width="50%"}
+
+::: {.fragment}
 
 This will give the following output. Next click on More Colors...
 
 ![](images/more_colours.png){fig-alt="Figure showing where the More Colors... button is." fig-align="center"}
+:::
 
 :::
 
@@ -1445,17 +1642,24 @@ https://jauntyjjs.github.io/useR-2024
 
 ::: {.column width="50%"}
 
-Go to the Custom tab and extract the hex code saying #00B050 for green. 
+::: {.fragment}
+
+Go to the Custom tab and extract the hex code saying #00B050 for [**green**]{style="color: #00B050"}. 
 
 ![](images/green_hex_code.png){fig-alt="Figure showing how to get the Hex code." fig-align="center"}
+:::
 
 :::
 
 ::: {.column width="50%"}
 
-Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemecolor.com/sample?getcolor=00B050> in our running example) to find out what the Hex8 code is for the green font.
+::: {.fragment}
+
+Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemecolor.com/sample?getcolor=00B050> in our running example) to find out what the Hex8 code is for the [**green**]{style="color: #00B050"} font.
 
 ![](images/green_hex8_code.png){fig-alt="Figure showing how to get the Hex8 code from www.schemecolor.com." fig-align="center"}
+
+:::
 
 :::
 
@@ -1470,7 +1674,7 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Can we fix `colour_weight` ?
 
-Identify the `local_format_id` accordingly with the black and green Hex8 code as #FF000000 and #FF00B050 respectively.
+Identify the `local_format_id` accordingly with the **black** and [**green**]{style="color: #00B050"} Hex8 code as #FF000000 and #FF00B050 respectively.
 
 ```{r}
 #| label: green font local format id 
