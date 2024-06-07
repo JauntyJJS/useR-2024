@@ -12,7 +12,7 @@
 $presentation-heading-font: 'Domine', serif !default;
 $presentation-font-size-root: 1.7rem !default;
 $presentation-h1-font-size: 4rem !default;
-$presentation-h2-font-size: 2.75rem !default;
+$presentation-h2-font-size: 2.65rem !default;
 $presentation-h3-font-size: 2rem !default;
 
 $link-color: #263b8c;
@@ -43,9 +43,13 @@ $body-bg: #F6EFDC;
 }
 
 .reveal pre.sourceCode code {
-  /* height: 500px; */
+  /* default height: 500px; */
   max-height: 500px;
   border-left: 12px solid #77ccd3;
+}
+
+.custom_pre_sourceCode_code {
+  max-height: 200px;
 }
 
 .reveal div.sourceCode {

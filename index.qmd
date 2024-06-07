@@ -437,14 +437,29 @@ https://jauntyjjs.github.io/useR-2024
 
 From these previous failed attempt, we start to ask these questions and lose confidence in R.
 
-- Does the `id` column only have unique values ?
-- Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?
-- Does the columns in `numeric_integer_issue` only have integer values ?
-- Does the columns in `one_or_zero_issue` only have values 0 or 1 ?
-- Can we fix `date_issue` ?
-- Can we fix `colour_weight` ?
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- [Does the `id` column only have unique values ?]{style="font-size: 90%;"}
+- [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{style="font-size: 90%;"}
+- [Does the columns in `numeric_integer_issue` only have integer values ?]{style="font-size: 90%;"}
+- [Does the columns in `one_or_zero_issue` only have values 0 or 1 ?]{style="font-size: 90%;"}
+- [Can we fix `date_issue` ?]{style="font-size: 90%;"}
+- [Can we fix `colour_weight` ?]{style="font-size: 90%;"}
+
+:::
+
+::: {.column width="50%"}
+![](images/no_idea.jpg){fig-alt="Image of a businessman sitting at office and feeling dull because lack of idea." fig-align="center" width="110%"}
+
+:::
+
+::::
 
 ::: footer
+
+Businessman sitting at office and feeling dull because lack of idea by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464584-business-man-sitting-at-office-and-feeling-dull-because-lack-of-idea-to-work)
 
 https://jauntyjjs.github.io/useR-2024
 [`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
@@ -464,14 +479,14 @@ Thankfully, there are some R packages ([***pointblank***](https://rstudio.github
 :::: {.columns}
 
 ::: {.column width="50%"}
-![Wind-up businessman images by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working)](images/manual_cleaning.jpg){fig-alt="Image of a businessman cleaning up."}
+![](images/manual_cleaning.jpg){fig-alt="Image of a businessman cleaning up." fig-align="center"}
 :::
 
 ::: {.column width="50%"}
 
 :::{.fragment fragment-index=1}
 
-![](images/packages.png){fig-alt="Image of R pacakges pointblank, collateral and tidyxl."}
+![](images/packages.png){fig-alt="Image of R pacakges pointblank, collateral and tidyxl." fig-align="center"}
 :::
 
 :::
@@ -479,6 +494,8 @@ Thankfully, there are some R packages ([***pointblank***](https://rstudio.github
 ::::
 
 ::: footer
+
+Wind-up businessman image by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working)
 
 https://jauntyjjs.github.io/useR-2024
 [`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
@@ -824,7 +841,7 @@ integer_check_from_text <- sample_excel_attempt_3 |>
     na_pass = TRUE,    
   ) |> 
   dplyr::rename(
-    text_integer_fixed = "text_integer_issue"
+    text_integer_verified = "text_integer_issue"
   )
   
 ```
@@ -885,7 +902,7 @@ numeric_check <- sample_excel_attempt_3 |>
     na_pass = TRUE,    
   ) |> 
   dplyr::rename(
-    text_numeric_fixed = "text_numeric_issue"
+    text_numeric_verified = "text_numeric_issue"
   )
   
 ```
@@ -1099,7 +1116,7 @@ integer_check_from_numeric <- sample_excel_attempt_3 |>
     numeric_integer_issue = as.integer(.data[["numeric_integer_issue"]]),
   ) |> 
   dplyr::rename(
-    numeric_integer_fixed = "numeric_integer_issue"
+    numeric_integer_verified = "numeric_integer_issue"
   )
   
   
@@ -1198,7 +1215,7 @@ one_or_zero_check <- sample_excel_attempt_3 |>
     set = c(NA, 0, 1)
   ) |> 
   dplyr::rename(
-    one_or_zero_fixed = "one_or_zero_issue"
+    one_or_zero_verified = "one_or_zero_issue"
   )
   
   
@@ -1468,6 +1485,91 @@ https://jauntyjjs.github.io/useR-2024
 
 :::
 
+## Can we fix `date_issue` ?
+
+Correct the invalid dates accordingly and rerun everything. We just assume that 32/1/2017 was supposed to be 31/1/2017.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: fix date
+#| echo: true
+#| eval: true
+
+fixed_date <- sample_excel_attempt_3 |> 
+  dplyr::select(c("id","date_issue")) |> 
+  dplyr::mutate(
+    date_issue = dplyr::case_when(
+      (.data[["id"]] == "ID0004" & 
+       .data[["date_issue"]] == "32/1/2017"
+      ) ~ list(c("31/1/2017")),
+      .default = .data[["date_issue"]]
+    ) 
+  ) |> 
+  dplyr::mutate(
+    converted_date_log = collateral::map_peacefully(
+      .x = .data[["date_issue"]],
+      .f = convert_dmy_text_to_date
+    ),
+    converted_date = purrr::map_vec(
+      .x = .data[["converted_date_log"]], 
+      .f = "result"
+    ),
+    warning_check = collateral::has_warnings(.data[["converted_date_log"]]),
+    error_check = collateral::has_errors(.data[["converted_date_log"]]),
+
+  ) |>
+  pointblank::col_vals_in_set(
+    columns = c("warning_check", "error_check"),
+    set = c(FALSE)    
+  ) |> 
+  dplyr::select(
+    c("id", "converted_date")
+  ) |> 
+  dplyr::rename(
+    date_fixed_yyyy_mm_dd = "converted_date"
+  )
+
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: fix date html
+#| eval: !expr out_type == "html"
+
+if (params$show_table && knitr::is_html_output()) {
+  fixed_date |>
+    reactable::reactable(
+      filterable = TRUE,
+      defaultPageSize = 5,
+      paginationType = "jump",
+      style = list(fontSize = "1rem")
+    )
+}
+
+```
+
+:::
+
+:::
+
+::::
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
 # Can we fix `colour_weight` ? {background-image="images/title.jpg" background-size="contain"}
 
 ## Can we fix `colour_weight` ?
@@ -1674,7 +1776,9 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Can we fix `colour_weight` ?
 
-Identify the `local_format_id` accordingly with the **black** and [**green**]{style="color: #00B050"} Hex8 code as #FF000000 and #FF00B050 respectively.
+::: {.fragment}
+
+Identify the `local_format_id` accordingly with the **black** and [**green**]{style="color: #00B050"} Hex8 code as **#FF000000** and [#FF00B050]{style="color: #00B050"} respectively.
 
 ```{r}
 #| label: green font local format id 
@@ -1695,6 +1799,10 @@ black_font_local_format_id <- which(formats$local$font$color$rgb == "FF000000")
 black_font_local_format_id
 ```
 
+:::
+
+::: {.fragment}
+
 Identify the column index of `colour_weight_black_in_pounds_green_in_kilograms`.
 
 ```{r}
@@ -1712,6 +1820,8 @@ weight_column_index <- cells |>
 weight_column_index
 ```
 
+:::
+
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
@@ -1721,11 +1831,37 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Can we fix `colour_weight` ?
 
-With the column index and `local_format_id` identified, we can filter the `cells` data to isolate cells which contain the weight in pounds and kilogram.
+With the column index and `local_format_id` identified, we can filter the `cells` data to isolate cells which contain the weight in pounds.
 
 :::: {.columns}
 
 ::: {.column width="50%"}
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: recall cells html
+#| eval: !expr out_type == "html"
+
+if (params$show_table && knitr::is_html_output()) {
+  cells |>
+    reactable::reactable(
+      filterable = TRUE,
+      defaultPageSize = 5,
+      paginationType = "jump",
+      style = list(fontSize = "1rem")
+    )
+}
+
+```
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
 
 ```{r}
 #| label: weight in pounds 
@@ -1763,7 +1899,50 @@ weight_in_pounds |>
 
 :::
 
+:::
+
+::::
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
+## Can we fix `colour_weight` ?
+
+With the column index and `local_format_id` identified, we can filter the `cells` data to isolate cells which contain the weight in kilogram.
+
+:::: {.columns}
+
 ::: {.column width="50%"}
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: recall cells html 2
+#| eval: !expr out_type == "html"
+
+if (params$show_table && knitr::is_html_output()) {
+  cells |>
+    reactable::reactable(
+      filterable = TRUE,
+      defaultPageSize = 5,
+      paginationType = "jump",
+      style = list(fontSize = "1rem")
+    )
+}
+
+```
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
 
 ```{r}
 #| label: weight in kg
@@ -1800,6 +1979,88 @@ weight_in_kg |>
 
 :::
 
+:::
+
+::::
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
+## Can we fix `colour_weight` ?
+
+We need to extract the `id` column from `cells` 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: recall cells html 3
+#| eval: !expr out_type == "html"
+
+if (params$show_table && knitr::is_html_output()) {
+  cells |>
+    reactable::reactable(
+      filterable = TRUE,
+      defaultPageSize = 5,
+      paginationType = "jump",
+      style = list(fontSize = "1rem")
+    )
+}
+
+```
+
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| label: get id from cells
+#| echo: true
+#| eval: true
+
+id_column_index <- which(
+  colnames(sample_excel_attempt_3) == "id"
+)
+
+id_cells <- cells |>
+  dplyr::filter(.data[["row"]] != 1) |> 
+  dplyr::filter(.data[["col"]] == id_column_index) |>
+  pointblank::col_vals_in_set(
+    columns = c("data_type"),
+    set = c("character")
+  ) |> 
+  dplyr::select(c("row", "character")) |> 
+  dplyr::rename(id = "character") 
+
+```
+
+```{r}
+#| label: get id from cells html
+
+id_cells |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+
+
+```
+
+:::
+
+:::
+
 ::::
 
 ::: footer
@@ -1818,23 +2079,9 @@ We combine the weight data together
 ::: {.column width="50%"}
 
 ```{r}
-#| label: combine
+#| label: combine weights
 #| echo: true
 #| eval: true
-
-id_column_index <- which(
-  colnames(sample_excel_attempt_3) == "id"
-)
-
-id_cells <- cells |>
-  dplyr::filter(.data[["row"]] != 1) |> 
-  dplyr::filter(.data[["col"]] == id_column_index) |>
-  pointblank::col_vals_in_set(
-    columns = c("data_type"),
-    set = c("character")
-  ) |> 
-  dplyr::select(c("row", "character")) |> 
-  dplyr::rename(id = "character") 
 
 fixed_weight <- id_cells |> 
   dplyr::left_join(weight_in_pounds, 
@@ -1878,6 +2125,115 @@ fixed_weight |>
 ::::
 
 ::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
+# Wrapping up {background-image="images/title.jpg" background-size="contain"}
+
+## Wrapping up
+
+We combine all fixed and verified columns together
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/before.png){fig-alt="A peak view of the first three columns of a formatted data set." fig-align="center"}
+![](images/before_last.png){fig-alt="A peak view of the last three columns of formatted data set." fig-align="center"}
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: combine all columns
+#| echo: true
+#| eval: true
+#| code-fold: true
+#| class-source: custom_pre_sourceCode_code
+
+cleaned_data <- sample_excel_attempt_3 |> 
+  dplyr::select("id") |> 
+  dplyr::left_join(fixed_date, 
+                   by = dplyr::join_by("id"),
+                   unmatched = "error",
+                   relationship = "one-to-one") |> 
+  dplyr::left_join(fixed_weight, 
+                   by = dplyr::join_by("id"),
+                   unmatched = "error",
+                   relationship = "one-to-one") |> 
+  dplyr::left_join(integer_check_from_text, 
+                   by = dplyr::join_by("id"),
+                   unmatched = "error",
+                   relationship = "one-to-one") |> 
+  dplyr::left_join(numeric_check, 
+                   by = dplyr::join_by("id"),
+                   unmatched = "error",
+                   relationship = "one-to-one") |> 
+  dplyr::left_join(integer_check_from_numeric, 
+                   by = dplyr::join_by("id"),
+                   unmatched = "error",
+                   relationship = "one-to-one") |> 
+  dplyr::left_join(one_or_zero_check, 
+                   by = dplyr::join_by("id"),
+                   unmatched = "error",
+                   relationship = "one-to-one")
+
+
+```
+
+```{r}
+#| label: cleaned_data html
+
+cleaned_data |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "1rem")
+  )
+
+
+```
+
+:::
+
+::::
+
+::: footer
+
+https://jauntyjjs.github.io/useR-2024
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+
+:::
+
+## Wrapping up
+
+Tidying up formatted Excel files remains challenging but there are ways to do this in R without too much manual work. R packages ([***pointblank***](https://rstudio.github.io/pointblank/), [***collateral***](https://collateral.jamesgoldie.dev/), [***tidyxl***](https://nacnudus.github.io/tidyxl/index.html)) can help to validate and tackle these problematic columns.
+
+Hope that it encouraging others to find or share alternative ways. 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/packages.png){fig-alt="Image of R pacakges pointblank, collateral and tidyxl." fig-align="center" width="100%"}
+
+:::
+
+::: {.column width="50%"}
+![](images/success.jpg){fig-alt="Image of a businessman sitting at stack of books, read a book and dreaming about success." fig-align="center" width="100%"}
+
+:::
+
+::::
+
+::: footer
+
+Businessman sitting at stack of books, read a book and dreaming about success by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464918-businessman-sit-at-stack-of-books-read-a-book-and-dreaming-about-success)
 
 https://jauntyjjs.github.io/useR-2024
 [`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
