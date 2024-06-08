@@ -2212,9 +2212,13 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Wrapping up
 
-Tidying up formatted Excel files remains challenging but there are ways to do this in R without too much manual work. R packages ([***pointblank***](https://rstudio.github.io/pointblank/){target="_blank"}, [***collateral***](https://collateral.jamesgoldie.dev/){target="_blank"}, [***tidyxl***](https://nacnudus.github.io/tidyxl/index.html){target="_blank"}) can help to validate and tackle these problematic columns.
+::: {style="font-size: 90%;"}
 
-Hope that it encouraging others to find or share alternative ways. 
+R packages ([***pointblank***](https://rstudio.github.io/pointblank/){target="_blank"}, [***collateral***](https://collateral.jamesgoldie.dev/){target="_blank"}, [***tidyxl***](https://nacnudus.github.io/tidyxl/index.html){target="_blank"}) can help to validate and tackle some problematic formatted columns in Excel, without resorting to too much manual work.
+
+However, we can see that tidying up formatted Excel files remains challenging, even with [***R***](https://www.r-project.org/){target="_blank"}. Hope that this presentation can encourage others to persevere and strive to find/share alternative ways.
+
+:::
 
 :::: {.columns}
 
