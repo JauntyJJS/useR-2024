@@ -1,7 +1,7 @@
 ---
 title: Tackling Formatted Tabular Data from Excel
 subtitle: "`r verbaliseR::prettify_date('2024-07-10', uk_or_us = 'UK')`"
-author: Jeremy Selva [`r fontawesome::fa(name = "linkedin", fill = "#273B8C")`](https://www.linkedin.com/in/jeremy-selva-085b9112a/) <br> @JauntyJJS [`r fontawesome::fa(name = "github", fill = "#273B8C")`](https://github.com/JauntyJJS) [`r fontawesome::fa(name = "twitter", fill = "#273B8C")`](https://twitter.com/JauntyJJS) <br> *https://jeremy-selva.netlify.app* [`r fontawesome::fa(name = "link", fill = "#273B8C")`](https://jeremy-selva.netlify.app/) <br> For useR! 2024 [`r fontawesome::fa(name = "r-project", fill = "#273B8C")`](https://events.linuxfoundation.org/user/)
+author: Jeremy Selva [`r fontawesome::fa(name = "linkedin", fill = "#273B8C")`](https://www.linkedin.com/in/jeremy-selva-085b9112a/){target="_blank"} <br> @JauntyJJS [`r fontawesome::fa(name = "github", fill = "#273B8C")`](https://github.com/JauntyJJS){target="_blank"} [`r fontawesome::fa(name = "twitter", fill = "#273B8C")`](https://twitter.com/JauntyJJS){target="_blank"} <br> *https://jeremy-selva.netlify.app* [`r fontawesome::fa(name = "link", fill = "#273B8C")`](https://jeremy-selva.netlify.app/){target="_blank"} <br> For useR! 2024 [`r fontawesome::fa(name = "r-project", fill = "#273B8C")`](https://events.linuxfoundation.org/user/){target="_blank"}
 format:
   revealjs:
     code-line-numbers: true
@@ -39,14 +39,14 @@ out_type <- knitr::opts_chunk$get("rmarkdown.pandoc.to")
 
 Formatted cells are useful for clinicians to make highlight important information. They tend to be well received by people but not so for software.
 
-Here is one that I have made called [sample_excel.xlsx](https://raw.githubusercontent.com/JauntyJJS/useR-2024/main//sample_excel.xlsx).
+Here is one that I have made called [sample_excel.xlsx](https://raw.githubusercontent.com/JauntyJJS/useR-2024/main//sample_excel.xlsx){target="_blank"}.
 
 ![](images/peak_view.png){fig-alt="A peak view of a formatted data set." fig-align="center"}
 
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -84,7 +84,7 @@ The other format is in **Date**
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -126,7 +126,7 @@ The columns `text_integer_issue` and `text_numeric_issue` are numeric columns bu
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -157,7 +157,7 @@ The columns `numeric_integer_issue` and `one_or_zero_issue` are numeric columns.
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -183,7 +183,7 @@ sample_excel_attempt_1 <- readxl::read_excel(
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -240,7 +240,7 @@ if (params$show_table && knitr::is_html_output()) {
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -291,7 +291,7 @@ str(sample_excel_attempt_1)
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -364,7 +364,7 @@ sample_excel_attempt_2 <- readxl::read_excel(
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -429,7 +429,7 @@ if (params$show_table && knitr::is_html_output()) {
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -459,10 +459,10 @@ From these previous failed attempt, we start to ask these questions and lose con
 
 ::: footer
 
-Businessman sitting at office and feeling dull because lack of idea by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464584-business-man-sitting-at-office-and-feeling-dull-because-lack-of-idea-to-work)
+Businessman sitting at office and feeling dull because lack of idea by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464584-business-man-sitting-at-office-and-feeling-dull-because-lack-of-idea-to-work){target="_blank"}
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -472,7 +472,7 @@ We can resort to manual checking/fixing of formatted cells in excel sheets. Howe
 
 :::{.fragment fragment-index=1}
 
-Thankfully, there are some R packages ([***pointblank***](https://rstudio.github.io/pointblank/), [***collateral***](https://collateral.jamesgoldie.dev/), [***tidyxl***](https://nacnudus.github.io/tidyxl/index.html)) that can help
+Thankfully, there are some R packages ([***pointblank***](https://rstudio.github.io/pointblank/){target="_blank"}, [***collateral***](https://collateral.jamesgoldie.dev/){target="_blank"}, [***tidyxl***](https://nacnudus.github.io/tidyxl/index.html){target="_blank"}) that can help
 
 :::
 
@@ -495,10 +495,10 @@ Thankfully, there are some R packages ([***pointblank***](https://rstudio.github
 
 ::: footer
 
-Wind-up businessman image by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working)
+Wind-up businessman image by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -530,7 +530,7 @@ sample_excel_attempt_3 <- readxl::read_excel(
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -615,7 +615,7 @@ id_check |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -656,13 +656,13 @@ The warnings inform the user that it sees "54" and "33" in cells D3 and D7 respe
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
 ## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
-Use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [***pointblank::col_vals_gt***](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that text in the column `text_integer_issue` are positive integers.
+Use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html){target="_blank"} and [***pointblank::col_vals_gt***](https://rstudio.github.io/pointblank/reference/col_vals_gt.html){target="_blank"} to ensure that text in the column `text_integer_issue` are positive integers.
 
 :::: {.columns}
 
@@ -755,13 +755,13 @@ data.frame(integer_data = c(-1, 0, 1, 2)) |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
 ## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
-Similarly, we can use the same functions [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) and [***pointblank::col_vals_gt***](https://rstudio.github.io/pointblank/reference/col_vals_gt.html) to ensure that the text in the column `text_numeric_issue` are positive numbers.
+Similarly, we can use the same functions [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html){target="_blank"} and [***pointblank::col_vals_gt***](https://rstudio.github.io/pointblank/reference/col_vals_gt.html){target="_blank"} to ensure that the text in the column `text_numeric_issue` are positive numbers.
 
 ::: {.fragment}
 
@@ -804,7 +804,7 @@ data.frame(numeric_data = c("not numeric", FALSE, "", 2)) |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -871,7 +871,7 @@ integer_check_from_text |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -934,7 +934,7 @@ numeric_check |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -948,7 +948,7 @@ https://jauntyjjs.github.io/useR-2024
 
 It may be necessary to check if a numeric column only has integers.
 
-However, we also cannot use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html) because the column is not read in text.
+However, we also cannot use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html){target="_blank"} because the column is not read in text.
 
 :::{.fragment fragment-index=1}
 
@@ -1018,13 +1018,13 @@ is_integer_vector <- function(input_vector,
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
 ## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
 
-Similarly, we can use [***pointblank::col_vals_expr***](https://rstudio.github.io/pointblank/reference/col_vals_expr.html) to ensure that the numeric column has only integer using the self-made `is_integer_vector` function.
+Similarly, we can use [***pointblank::col_vals_expr***](https://rstudio.github.io/pointblank/reference/col_vals_expr.html){target="_blank"} to ensure that the numeric column has only integer using the self-made `is_integer_vector` function.
 
 :::: {.columns}
 
@@ -1088,7 +1088,7 @@ non_integer_data |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1147,7 +1147,7 @@ integer_check_from_numeric |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1155,7 +1155,7 @@ https://jauntyjjs.github.io/useR-2024
 
 ## [Does the columns in `one_or_zero_issue` only have values 0 or 1 ?]{.r-fit-text}
 
-[Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to ensure that the column only contains values from a user-defined set.]{style="font-size: 90%;"}
+[Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html){target="_blank"} to ensure that the column only contains values from a user-defined set.]{style="font-size: 90%;"}
 
 :::: {.columns}
 
@@ -1245,7 +1245,7 @@ one_or_zero_check |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1317,7 +1317,7 @@ if (params$show_table && knitr::is_html_output()) {
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1347,24 +1347,24 @@ convert_dmy_text_to_date <- function(input) {
 
 ::: {.callout-tip}
 ## [Tip]{style="font-size: 150%;"}
-[However, creating function can lead to unexpected warnings and errors. To view these issues, I use some functions from the [***collateral***](https://collateral.jamesgoldie.dev/) R package.]{style="font-size: 150%;"}
+[However, creating function can lead to unexpected warnings and errors. To view these issues, I use some functions from the [***collateral***](https://collateral.jamesgoldie.dev/) R package.]{style="font-size: 150%;" target="_blank"}
 :::
 
--  [***collateral::map_peacefully***](https://collateral.jamesgoldie.dev/reference/collateral_mappers)
--  [***collateral::has_warnings***](https://collateral.jamesgoldie.dev/reference/has) and [***collateral::has_errors***](https://collateral.jamesgoldie.dev/reference/has)
+-  [***collateral::map_peacefully***](https://collateral.jamesgoldie.dev/reference/collateral_mappers){target="_blank"}
+-  [***collateral::has_warnings***](https://collateral.jamesgoldie.dev/reference/has){target="_blank"} and [***collateral::has_errors***](https://collateral.jamesgoldie.dev/reference/has){target="_blank"}
 
 :::
 
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
 ## Can we fix `date_issue` ?
 
-Use [***collateral::map_peacefully***](https://collateral.jamesgoldie.dev/reference/collateral_mappers) to capture function side effects using both [***purrr::safely()***](https://purrr.tidyverse.org/reference/safely.html) and [***purrr::quietly()***](https://purrr.tidyverse.org/reference/quietly.html).
+Use [***collateral::map_peacefully***](https://collateral.jamesgoldie.dev/reference/collateral_mappers){target="_blank"} to capture function side effects using both [***purrr::safely()***](https://purrr.tidyverse.org/reference/safely.html){target="_blank"} and [***purrr::quietly()***](https://purrr.tidyverse.org/reference/quietly.html){target="_blank"}.
 
 ::: {.fragment}
 
@@ -1395,13 +1395,13 @@ print(head(fixed_date))
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
 ## Can we fix `date_issue` ?
 
-[Use [***collateral::has_warnings***](https://collateral.jamesgoldie.dev/reference/has) and [***collateral::has_errors***](https://collateral.jamesgoldie.dev/reference/has) to create logical columns which gives `TRUE` when there are warning or error messages.]{.fragment fragment-index=1} [Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html) to obtain a single logical value.]{.fragment fragment-index=2}
+[Use [***collateral::has_warnings***](https://collateral.jamesgoldie.dev/reference/has){target="_blank"} and [***collateral::has_errors***](https://collateral.jamesgoldie.dev/reference/has){target="_blank"} to create logical columns which gives `TRUE` when there are warning or error messages.]{.fragment fragment-index=1} [Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html){target="_blank"} to obtain a single logical value.]{.fragment fragment-index=2}
 
 ::: {.fragment fragment-index=1}
 
@@ -1442,7 +1442,7 @@ print(no_issue)
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1481,7 +1481,7 @@ if (!isTRUE(no_issue)) {
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1566,7 +1566,7 @@ if (params$show_table && knitr::is_html_output()) {
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1574,7 +1574,7 @@ https://jauntyjjs.github.io/useR-2024
 
 ## Can we fix `colour_weight` ?
 
-Use [***tidyxl::xlsx_cells***](https://nacnudus.github.io/tidyxl/reference/xlsx_cells.html) to read the excel file in cells.
+Use [***tidyxl::xlsx_cells***](https://nacnudus.github.io/tidyxl/reference/xlsx_cells.html){target="_blank"} to read the excel file in cells.
 
 :::: {.columns}
 
@@ -1633,13 +1633,13 @@ if (params$show_table && knitr::is_html_output()) {
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
 ## Can we fix `colour_weight` ?
 
-Use [***tidyxl::xlsx_formats***](https://nacnudus.github.io/tidyxl/reference/xlsx_formats.html) to obtain the format information of the excel file in a list.
+Use [***tidyxl::xlsx_formats***](https://nacnudus.github.io/tidyxl/reference/xlsx_formats.html){target="_blank"} to obtain the format information of the excel file in a list.
 
 :::: {.columns}
 
@@ -1698,7 +1698,7 @@ formats
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1734,7 +1734,7 @@ This will give the following output. Next click on More Colors...
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1757,7 +1757,7 @@ Go to the Custom tab and extract the hex code saying #00B050 for [**green**]{sty
 
 ::: {.fragment}
 
-Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemecolor.com/sample?getcolor=00B050> in our running example) to find out what the Hex8 code is for the [**green**]{style="color: #00B050"} font.
+Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemecolor.com/sample?getcolor=00B050>{target="_blank"} in our running example) to find out what the Hex8 code is for the [**green**]{style="color: #00B050"} font.
 
 ![](images/green_hex8_code.png){fig-alt="Figure showing how to get the Hex8 code from www.schemecolor.com." fig-align="center"}
 
@@ -1770,7 +1770,7 @@ Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemec
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1825,7 +1825,7 @@ weight_column_index
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1906,7 +1906,7 @@ weight_in_pounds |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1986,7 +1986,7 @@ weight_in_kg |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -2066,7 +2066,7 @@ id_cells |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -2127,7 +2127,7 @@ fixed_weight |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -2206,13 +2206,13 @@ cleaned_data |>
 ::: footer
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
 ## Wrapping up
 
-Tidying up formatted Excel files remains challenging but there are ways to do this in R without too much manual work. R packages ([***pointblank***](https://rstudio.github.io/pointblank/), [***collateral***](https://collateral.jamesgoldie.dev/), [***tidyxl***](https://nacnudus.github.io/tidyxl/index.html)) can help to validate and tackle these problematic columns.
+Tidying up formatted Excel files remains challenging but there are ways to do this in R without too much manual work. R packages ([***pointblank***](https://rstudio.github.io/pointblank/){target="_blank"}, [***collateral***](https://collateral.jamesgoldie.dev/){target="_blank"}, [***tidyxl***](https://nacnudus.github.io/tidyxl/index.html){target="_blank"}) can help to validate and tackle these problematic columns.
 
 Hope that it encouraging others to find or share alternative ways. 
 
@@ -2233,9 +2233,9 @@ Hope that it encouraging others to find or share alternative ways.
 
 ::: footer
 
-Businessman sitting at stack of books, read a book and dreaming about success by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464918-businessman-sit-at-stack-of-books-read-a-book-and-dreaming-about-success)
+Businessman sitting at stack of books, read a book and dreaming about success by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464918-businessman-sit-at-stack-of-books-read-a-book-and-dreaming-about-success){target="_blank"}
 
 https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024)
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
