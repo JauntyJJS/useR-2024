@@ -1347,7 +1347,7 @@ convert_dmy_text_to_date <- function(input) {
 
 ::: {.callout-tip}
 ## [Tip]{style="font-size: 150%;"}
-[However, creating function can lead to unexpected warnings and errors. To view these issues, I use some functions from the [***collateral***](https://collateral.jamesgoldie.dev/) R package.]{style="font-size: 150%;" target="_blank"}
+[However, creating function can lead to unexpected warnings and errors. To view these issues, I use some functions from the [***collateral***](https://collateral.jamesgoldie.dev/){target="_blank"} R package.]{style="font-size: 150%;" target="_blank"}
 :::
 
 -  [***collateral::map_peacefully***](https://collateral.jamesgoldie.dev/reference/collateral_mappers){target="_blank"}
@@ -1372,6 +1372,7 @@ Use [***collateral::map_peacefully***](https://collateral.jamesgoldie.dev/refere
 #| label: get fixed_date
 #| echo: true
 #| eval: true
+#| code-line-numbers: "|3-12"
 #| output-location: fragment
 
 fixed_date <- sample_excel_attempt_3 |>
@@ -1778,7 +1779,7 @@ https://jauntyjjs.github.io/useR-2024
 
 ::: {.fragment}
 
-Identify the `local_format_id` accordingly with the **black** and [**green**]{style="color: #00B050"} Hex8 code as **#FF000000** and [#FF00B050]{style="color: #00B050"} respectively.
+Identify the `local_format_id` accordingly with the **black** and [**green**]{style="color: #00B050"} Hex8 code as **#FF000000** and [**#FF00B050**]{style="color: #00B050"} respectively.
 
 ```{r}
 #| label: green font local format id 
@@ -1803,7 +1804,7 @@ black_font_local_format_id
 
 ::: {.fragment}
 
-Identify the column index of `colour_weight_black_in_pounds_green_in_kilograms`.
+Identify the column index of `colour_weight_black_in_pounds_green_in_kilograms`. [***pointblank::row_count_match***](https://rstudio.github.io/pointblank/reference/row_count_match.html){target="_blank"} is used to ensure we have only one row left after filtering.
 
 ```{r}
 #| label: weight column index
