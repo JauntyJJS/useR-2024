@@ -1,7 +1,7 @@
 ---
 title: Tackling Formatted Tabular Data from Excel
 subtitle: "`r verbaliseR::prettify_date('2024-07-10', uk_or_us = 'UK')`"
-author: Jeremy Selva [`r fontawesome::fa(name = "linkedin", fill = "#273B8C")`](https://www.linkedin.com/in/jeremy-selva-085b9112a/){target="_blank"} <br> @JauntyJJS [`r fontawesome::fa(name = "github", fill = "#273B8C")`](https://github.com/JauntyJJS){target="_blank"} [`r fontawesome::fa(name = "twitter", fill = "#273B8C")`](https://twitter.com/JauntyJJS){target="_blank"} <br> *https://jeremy-selva.netlify.app* [`r fontawesome::fa(name = "link", fill = "#273B8C")`](https://jeremy-selva.netlify.app/){target="_blank"} <br> For useR! 2024 [`r fontawesome::fa(name = "r-project", fill = "#273B8C")`](https://events.linuxfoundation.org/user/){target="_blank"}
+author: Jeremy Selva [`r fontawesome::fa(name = "linkedin", fill = "#273B8C")`](https://www.linkedin.com/in/jeremy-selva-085b9112a/){target="_blank"} <br> @JauntyJJS [`r fontawesome::fa(name = "github", fill = "#273B8C")`](https://github.com/JauntyJJS){target="_blank"} [`r fontawesome::fa(name = "fab fa-x-twitter", fill = "#273B8C")`](https://twitter.com/JauntyJJS){target="_blank"} <br> [*https://jeremy-selva.netlify.app* `r fontawesome::fa(name = "link", fill = "#273B8C")`](https://jeremy-selva.netlify.app/){target="_blank"} <br> [For useR! 2024 `r fontawesome::fa(name = "r-project", fill = "#273B8C")`](https://events.linuxfoundation.org/user/){target="_blank"}
 format:
   revealjs:
     code-line-numbers: true
@@ -45,8 +45,8 @@ Here is one that I have made called [sample_excel.xlsx](https://raw.githubuserco
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -83,8 +83,8 @@ The other format is in **Date**
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -125,8 +125,8 @@ The columns `text_integer_issue` and `text_numeric_issue` are numeric columns bu
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -156,8 +156,8 @@ The columns `numeric_integer_issue` and `one_or_zero_issue` are numeric columns.
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -182,8 +182,8 @@ sample_excel_attempt_1 <- readxl::read_excel(
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -239,8 +239,8 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -290,8 +290,8 @@ str(sample_excel_attempt_1)
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -363,8 +363,8 @@ sample_excel_attempt_2 <- readxl::read_excel(
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -428,8 +428,8 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -459,10 +459,10 @@ From these previous failed attempt, we start to ask these questions and lose con
 
 ::: footer
 
-Businessman sitting at office and feeling dull because lack of idea by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464584-business-man-sitting-at-office-and-feeling-dull-because-lack-of-idea-to-work){target="_blank"}
+[*Businessman sitting at office and feeling dull because lack of idea by Amonrat Rungreangfangsai*](https://www.vecteezy.com/vector-art/464584-business-man-sitting-at-office-and-feeling-dull-because-lack-of-idea-to-work){target="_blank"}
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -495,10 +495,10 @@ Thankfully, there are some R packages ([***pointblank***](https://rstudio.github
 
 ::: footer
 
-Wind-up businessman image by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}
+[*Wind-up businessman image by Amonrat Rungreangfangsai*](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -529,8 +529,8 @@ sample_excel_attempt_3 <- readxl::read_excel(
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -614,8 +614,8 @@ id_check |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -655,8 +655,8 @@ The warnings inform the user that it sees "54" and "33" in cells D3 and D7 respe
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -754,8 +754,8 @@ data.frame(integer_data = c(-1, 0, 1, 2)) |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -803,8 +803,8 @@ data.frame(numeric_data = c("not numeric", FALSE, "", 2)) |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -870,8 +870,8 @@ integer_check_from_text |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -933,8 +933,8 @@ numeric_check |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1017,8 +1017,8 @@ is_integer_vector <- function(input_vector,
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1087,8 +1087,8 @@ non_integer_data |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1146,8 +1146,8 @@ integer_check_from_numeric |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1244,8 +1244,8 @@ one_or_zero_check |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1316,8 +1316,8 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1357,8 +1357,8 @@ convert_dmy_text_to_date <- function(input) {
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1395,8 +1395,8 @@ print(head(fixed_date))
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1442,8 +1442,8 @@ print(no_issue)
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1481,8 +1481,8 @@ if (!isTRUE(no_issue)) {
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1566,8 +1566,8 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1633,8 +1633,8 @@ if (params$show_table && knitr::is_html_output()) {
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1698,8 +1698,8 @@ formats
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1734,8 +1734,8 @@ This will give the following output. Next click on More Colors...
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1758,7 +1758,7 @@ Go to the Custom tab and extract the hex code saying #00B050 for [**green**]{sty
 
 ::: {.fragment}
 
-Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemecolor.com/sample?getcolor=00B050>{target="_blank"} in our running example) to find out what the Hex8 code is for the [**green**]{style="color: #00B050"} font.
+Next, use *https://www.schemecolor.com/?getcolor={hex code}* ([*https://www.schemecolor.com/sample?getcolor=00B050*](https://www.schemecolor.com/sample?getcolor=00B050){target="_blank"} in our running example) to find out what the Hex8 code is for the [**green**]{style="color: #00B050"} font.
 
 ![](images/green_hex8_code.png){fig-alt="Figure showing how to get the Hex8 code from www.schemecolor.com." fig-align="center"}
 
@@ -1770,8 +1770,8 @@ Next, use https://www.schemecolor.com/?getcolor={hex code} (<https://www.schemec
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1825,8 +1825,8 @@ weight_column_index
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1906,8 +1906,8 @@ weight_in_pounds |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -1986,8 +1986,8 @@ weight_in_kg |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -2066,8 +2066,8 @@ id_cells |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -2127,8 +2127,8 @@ fixed_weight |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -2206,8 +2206,8 @@ cleaned_data |>
 
 ::: footer
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
 
@@ -2238,9 +2238,9 @@ However, we can see that tidying up formatted Excel files remains challenging, e
 
 ::: footer
 
-Businessman sitting at stack of books, read a book and dreaming about success by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464918-businessman-sit-at-stack-of-books-read-a-book-and-dreaming-about-success){target="_blank"}
+[*Businessman sitting at stack of books, read a book and dreaming about success by Amonrat Rungreangfangsai*](https://www.vecteezy.com/vector-art/464918-businessman-sit-at-stack-of-books-read-a-book-and-dreaming-about-success){target="_blank"}
 
-https://jauntyjjs.github.io/useR-2024
-[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/useR-2024/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
 
 :::
