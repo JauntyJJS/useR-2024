@@ -13,7 +13,28 @@ format:
     scrollable: true
     mouse-wheel: true
     highlight-style: ayu-mirage
+    logo: images/qr.png
     theme: [custom.scss]
+    include-in-header: 
+      text: |
+        <meta name="github-repo" content="JauntyJJS/useR-2024" />
+        <meta name="twitter:title" content="Tackling Formatted Tabular Data from Excel" />
+        <meta name="twitter:description" content="Presentation for useR! 2024" />
+        <meta name="twitter:url" content="https://jauntyjjs.github.io/useR-2024" />
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/JauntyJJS/useR-2024/main/share-card.png" />
+        <meta name="twitter:image:alt" content="Title slide of Tackling Formatted Tabular Data from Excel presented at useR! 2024" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@JauntyJJS" />
+        <meta name="twitter:site" content="@JauntyJJS" />
+        <meta property="og:title" content="Tackling Formatted Tabular Data from Excel" />
+        <meta property="og:description" content="Presentation for useR! 2024" />
+        <meta property="og:url" content="https://jauntyjjs.github.io/useR-2024" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/JauntyJJS/useR-2024/main/share-card.png" />
+        <meta property="og:image:alt" content="Title slide of Tackling Formatted Tabular Data from Excel presented at useR! 2024" />
+        <meta property="og:site_name" content="useR! 2024" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_UK" />
+        <meta property="article:author" content="Jeremy Selva" />
 title-slide-attributes:
     data-background-image: images/title.jpg
     data-background-size: contain
@@ -28,7 +49,16 @@ params:
 
 library(fontawesome)
 library(verbaliseR)
+library(here)
 library(readxl)
+library(tidyxl)
+library(dplyr)
+library(purrr)
+library(reactable)
+library(pointblank)
+library(collateral)
+library(unheadr)
+library(knitr)
 
 out_type <- knitr::opts_chunk$get("rmarkdown.pandoc.to")
 ```
@@ -2120,6 +2150,81 @@ fixed_weight |>
 
 
 ```
+
+:::
+
+::::
+
+::: footer
+
+[*https://jauntyjjs.github.io/useR-2024*
+`r fontawesome::fa(name = "link")`]([*https://jauntyjjs.github.io/useR-2024*/){target="_blank"} [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/useR-2024){target="_blank"}
+
+:::
+
+## Can we fix `colour_weight` (alternative) ?
+
+Another approach is to use [***unheadr::annotate_mf_all***](https://unheadr.liomys.mx/reference/annotate_mf_all.html){target="_blank"} but the last column `one_or_zero_issue` must be removed ([sample_excel_remove_last.xlsx](https://raw.githubusercontent.com/JauntyJJS/useR-2024/main//sample_excel_remove_last.xlsx){target="_blank"}).
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+::: {.fragment}
+
+```{r}
+#| label: unheadr fail
+#| echo: true
+#| eval: true
+#| error: true
+
+sample_excel_attempt_4 <- unheadr::annotate_mf_all(
+  xlfilepath = here::here(
+    "sample_excel.xlsx"
+  )
+)
+
+```
+
+![](images/remove_last.png){fig-alt="Figure showing how to get the Hex8 code from www.schemecolor.com." fig-align="center"}
+:::
+
+:::
+
+::: {.column width="55%"}
+
+::: {.fragment}
+
+```{r}
+#| label: unheadr success
+#| echo: true
+#| eval: true
+
+sample_excel_attempt_4 <- unheadr::annotate_mf_all(
+  xlfilepath = here::here("sample_excel_remove_last.xlsx")
+)
+
+```
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: unheadr success print
+
+sample_excel_attempt_4 |>
+  reactable::reactable(
+    filterable = TRUE,
+    defaultPageSize = 5,
+    paginationType = "jump",
+      style = list(fontSize = "0.75rem")
+  )
+
+
+```
+
+:::
+
+:::
 
 :::
 
