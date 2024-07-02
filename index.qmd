@@ -2033,7 +2033,7 @@ We need to extract the `id` column from `cells`
 
 ```{r}
 #| label: recall cells html 3
-#| eval: !expr out_type == "html"
+
 
 if (params$show_table && knitr::is_html_output()) {
   cells |>
