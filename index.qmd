@@ -473,8 +473,8 @@ From these previous failed attempt, we start to ask these questions and lose con
 
 - [Does the `id` column only have unique values ?]{style="font-size: 90%;"}
 - [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{style="font-size: 90%;"}
-- [Does the columns in `numeric_integer_issue` only have integer values ?]{style="font-size: 90%;"}
-- [Does the columns in `one_or_zero_issue` only have values 0 or 1 ?]{style="font-size: 90%;"}
+- [Does column `numeric_integer_issue` only have integer values ?]{style="font-size: 90%;"}
+- [Does column `one_or_zero_issue` only have values 0 or 1 ?]{style="font-size: 90%;"}
 - [Can we fix `date_issue` ?]{style="font-size: 90%;"}
 - [Can we fix `colour_weight` ?]{style="font-size: 90%;"}
 
@@ -534,12 +534,12 @@ Thankfully, there are some R packages ([***pointblank***](https://rstudio.github
 
 ## Read Data Attempt 3
 
-We read the excel sheet again with the following `col_type` and deal with each column one at a time.
+We read the excel sheet again with the following `col_type` and deal with each question one at a time.
 
 - `id` as "text"
-- `date_issue` as "list"
+- `date_issue` as [**"list"**]{style="color: #3570b6"}
 - ~~`colour_weight \r\nBlack in pounds\r\nGreen in kilograms` as "text"~~ 
-- `text_integer_issue` and `text_numeric_issue` as "text"
+- `text_integer_issue` and `text_numeric_issue` as [**"text"**]{style="color: #3570b6"}
 - `numeric_integer_issue` and `one_or_zero_issue` as "numeric"
 
 ```{r}
@@ -968,9 +968,9 @@ numeric_check |>
 
 :::
 
-# Does the columns in `numeric_integer_issue` only have integer values ? {background-image="images/title.jpg" background-size="contain"}
+# Does the column `numeric_integer_issue` only have integer values ? {background-image="images/title.jpg" background-size="contain"}
 
-## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
+## [Does the column `numeric_integer_issue` only have integer values ?]{.r-fit-text}
 
 :::: {.columns}
 
@@ -1052,7 +1052,7 @@ is_integer_vector <- function(input_vector,
 
 :::
 
-## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
+## [Does the column `numeric_integer_issue` only have integer values ?]{.r-fit-text}
 
 Similarly, we can use [***pointblank::col_vals_expr***](https://rstudio.github.io/pointblank/reference/col_vals_expr.html){target="_blank"} to ensure that the numeric column has only integer using the self-made `is_integer_vector` function.
 
@@ -1122,7 +1122,7 @@ non_integer_data |>
 
 :::
 
-## [Does the columns in `numeric_integer_issue` only have integer values ?]{.r-fit-text}
+## [Does the column `numeric_integer_issue` only have integer values ?]{.r-fit-text}
 
 Continue with `sample_excel_attempt_3` which reads `numeric_integer_issue` column as numeric. We apply the `is_integer_vector` function on the `numeric_integer_issue` column before converting the column to an integer column.
 
@@ -1181,11 +1181,11 @@ integer_check_from_numeric |>
 
 :::
 
-# Does the columns in `one_or_zero_issue` only have values 0 or 1 ? {background-image="images/title.jpg" background-size="contain"}
+# Does the column `one_or_zero_issue` only have values 0 or 1 ? {background-image="images/title.jpg" background-size="contain"}
 
-## [Does the columns in `one_or_zero_issue` only have values 0 or 1 ?]{.r-fit-text}
+## [Does the column `one_or_zero_issue` only have values 0 or 1 ?]{.r-fit-text}
 
-[Use [***pointblank::test_col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html){target="_blank"} to ensure that the column only contains values from a user-defined set.]{style="font-size: 90%;"}
+[Use [***pointblank::col_vals_in_set***](https://rstudio.github.io/pointblank/reference/col_vals_in_set.html){target="_blank"} to ensure that the column only contains values from a user-defined set.]{style="font-size: 90%;"}
 
 :::: {.columns}
 
