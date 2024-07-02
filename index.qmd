@@ -69,7 +69,7 @@ out_type <- knitr::opts_chunk$get("rmarkdown.pandoc.to")
 
 Formatted cells are useful for clinicians to make highlight important information. They tend to be well received by people but not so for software.
 
-Here is one that I have made called [sample_excel.xlsx](https://raw.githubusercontent.com/JauntyJJS/useR-2024/main//sample_excel.xlsx){target="_blank"}.
+Here is one called [sample_excel.xlsx](https://raw.githubusercontent.com/JauntyJJS/useR-2024/main//sample_excel.xlsx){target="_blank"}.
 
 ![](images/peak_view.png){fig-alt="A peak view of a formatted data set." fig-align="center"}
 
@@ -195,7 +195,7 @@ The columns `numeric_integer_issue` and `one_or_zero_issue` are numeric columns.
 
 ## Read Data Attempt 1
 
-We try to read the data but no warning was provided.
+Tried to read the data using [***readxl::read_excel***](https://readxl.tidyverse.org/reference/read_excel.html). No warning was provided but...
 
 ```{r}
 #| label: read data attempt 1
@@ -223,7 +223,7 @@ sample_excel_attempt_1 <- readxl::read_excel(
 
 ::: {.column width="50%"}
 
-We have the following output
+Here is the output
 
 ::: {.content-visible when-format="html"}
 
@@ -327,7 +327,7 @@ str(sample_excel_attempt_1)
 
 ## Read Data Attempt 2
 
-When we read the formatted data indicating the column types, it gives intimidating warnings.
+When I read the formatted data indicating the column types, it gives intimidating warnings.
 
 :::: {.columns}
 
@@ -404,7 +404,7 @@ sample_excel_attempt_2 <- readxl::read_excel(
 
 ::: {.column width="50%"}
 
-We have the following output
+Here is the output
 
 ::: {.content-visible when-format="html"}
 
@@ -465,7 +465,7 @@ if (params$show_table && knitr::is_html_output()) {
 
 ## Reflection
 
-From these previous failed attempt, we start to ask these questions and lose confidence in R.
+From these previous failed attempt, I start to ask these questions and lose confidence in R.
 
 :::: {.columns}
 
@@ -498,7 +498,7 @@ From these previous failed attempt, we start to ask these questions and lose con
 
 ## Reflection
 
-We can resort to manual checking/fixing of formatted cells in excel sheets. However, we can't be doing this for hundreds of rows all the times. 
+Resort to manual checking/fixing of formatted cells in excel sheets. However, I realise that this approach is not sustainable.
 
 :::{.fragment fragment-index=1}
 
@@ -534,7 +534,7 @@ Thankfully, there are some R packages ([***pointblank***](https://rstudio.github
 
 ## Read Data Attempt 3
 
-We read the excel sheet again with the following `col_type` and deal with each question one at a time.
+Read the excel sheet again with the following `col_type` and deal with each question one at a time.
 
 - `id` as "text"
 - `date_issue` as [**"list"**]{style="color: #3570b6"}
@@ -657,7 +657,7 @@ id_check |>
 
 ::: {.column width="80%"}
 
-In sample_excel_attempt_2, when we read `text_integer_issue` as a numeric column, we received some warning message..
+In sample_excel_attempt_2, when I read `text_integer_issue` as a numeric column, I received some warning message..
 
 -  Warning: Coercing text to numeric in D3 / R3C4: '54'
 -  Warning: Coercing text to numeric in D7 / R7C4: '33'
@@ -791,7 +791,7 @@ data.frame(integer_data = c(-1, 0, 1, 2)) |>
 
 ## [Are numbers in characters from columns `text_integer_issue` and `text_numeric_issue` read correctly ?]{.r-fit-text}
 
-Similarly, we can use the same functions [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html){target="_blank"} and [***pointblank::col_vals_gt***](https://rstudio.github.io/pointblank/reference/col_vals_gt.html){target="_blank"} to ensure that the text in the column `text_numeric_issue` are positive numbers.
+Similarly, I can use the same functions [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html){target="_blank"} and [***pointblank::col_vals_gt***](https://rstudio.github.io/pointblank/reference/col_vals_gt.html){target="_blank"} to ensure that the text in the column `text_numeric_issue` are positive numbers.
 
 ::: {.fragment}
 
@@ -978,11 +978,11 @@ numeric_check |>
 
 It may be necessary to check if a numeric column only has integers.
 
-However, we also cannot use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html){target="_blank"} because the column is not read in text.
+However, I cannot use [***pointblank::col_vals_regex***](https://rstudio.github.io/pointblank/reference/col_vals_regex.html){target="_blank"} because the column is not read in text.
 
 :::{.fragment fragment-index=1}
 
-We create the function `is_integer_vector` that returns `FALSE` when at least one of its element is not an integer.
+Create the function `is_integer_vector` that returns `FALSE` when at least one of its element is not an integer.
 
 :::
 
@@ -1054,7 +1054,7 @@ is_integer_vector <- function(input_vector,
 
 ## [Does the column `numeric_integer_issue` only have integer values ?]{.r-fit-text}
 
-Similarly, we can use [***pointblank::col_vals_expr***](https://rstudio.github.io/pointblank/reference/col_vals_expr.html){target="_blank"} to ensure that the numeric column has only integer using the self-made `is_integer_vector` function.
+Similarly, I can use [***pointblank::col_vals_expr***](https://rstudio.github.io/pointblank/reference/col_vals_expr.html){target="_blank"} to ensure that the numeric column has only integer using the self-made `is_integer_vector` function.
 
 :::: {.columns}
 
@@ -1124,7 +1124,7 @@ non_integer_data |>
 
 ## [Does the column `numeric_integer_issue` only have integer values ?]{.r-fit-text}
 
-Continue with `sample_excel_attempt_3` which reads `numeric_integer_issue` column as numeric. We apply the `is_integer_vector` function on the `numeric_integer_issue` column before converting the column to an integer column.
+Going back to `sample_excel_attempt_3` which reads `numeric_integer_issue` column as numeric, I apply the `is_integer_vector` function on the `numeric_integer_issue` column before converting the column to an integer column.
 
 :::: {.columns}
 
@@ -1353,7 +1353,7 @@ if (params$show_table && knitr::is_html_output()) {
 
 ## Can we fix `date_issue` ?
 
-Next I create a function that convert dates in character vectors into `Date` objects, convert logical vector to `NA` and convert `Date` vectors into the date format that I want.
+Next, create a function that convert dates in character vectors into `Date` objects, convert logical vector to `NA` and convert `Date` vectors into the date format that I want.
 
 ```{r}
 #| label: convert_dmy_text_to_date
@@ -1485,7 +1485,7 @@ Isolate rows with issues and output the warning and error messages.
 #| label: isolate issues
 #| echo: true
 #| eval: true
-#| code-line-numbers: "|6-15"
+#| code-line-numbers: "|3-15"
 #| output-location: column
 
 if (!isTRUE(no_issue)) {
@@ -1626,7 +1626,7 @@ cells <- tidyxl::xlsx_cells(
 ::: {.fragment}
 Observe that there is no indication of which row is [**green**]{style="color: #00B050"} or **black**. 
 
-We are only provided the `local_format_id` labelled 1 to 15 at the last column.
+I am only provided with the `local_format_id` labelled 1 to 15 at the last column.
 :::
 
 :::
@@ -1706,7 +1706,7 @@ unique(formats$local$font$color$rgb)
 
 ::: {.fragment}
 
-We need to identify which one is **black** and [**green**]{style="color: #00B050"}.
+Need to identify which one is **black** and [**green**]{style="color: #00B050"}.
 
 :::
 
@@ -2023,7 +2023,7 @@ weight_in_kg |>
 
 ## Can we fix `colour_weight` ?
 
-We need to extract the `id` column from `cells` 
+Need to extract the `id` column from `cells` 
 
 :::: {.columns}
 
@@ -2103,7 +2103,7 @@ id_cells |>
 
 ## Can we fix `colour_weight` ?
 
-We combine the weight data together
+Combine the weight data together
 
 :::: {.columns}
 
@@ -2241,7 +2241,7 @@ sample_excel_attempt_4 |>
 
 ## Wrapping up
 
-We combine all fixed and verified columns together
+Combine all fixed and verified columns together
 
 :::: {.columns}
 
