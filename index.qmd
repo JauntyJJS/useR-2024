@@ -2,7 +2,6 @@
 title: Tackling Formatted Tabular Data from Excel
 subtitle: "`r verbaliseR::prettify_date('2024-07-10', uk_or_us = 'UK')`"
 author: Jeremy Selva [`r fontawesome::fa(name = "linkedin", fill = "#273B8C")`](https://www.linkedin.com/in/jeremy-selva-085b9112a/){target="_blank"} <br> @JauntyJJS [`r fontawesome::fa(name = "github", fill = "#273B8C")`](https://github.com/JauntyJJS){target="_blank"} [`r fontawesome::fa(name = "fab fa-x-twitter", fill = "#273B8C")`](https://twitter.com/JauntyJJS){target="_blank"} <br> [*https://jeremy-selva.netlify.app* `r fontawesome::fa(name = "link", fill = "#273B8C")`](https://jeremy-selva.netlify.app/){target="_blank"} <br> [For useR! 2024 `r fontawesome::fa(name = "r-project", fill = "#273B8C")`](https://events.linuxfoundation.org/user/){target="_blank"}
-validate-yaml: false
 format:
   revealjs:
     code-line-numbers: true
@@ -230,7 +229,7 @@ We have the following output
 
 ```{r}
 #| label: sample_excel_attempt_1 html
-#| eval: !expr out_type == "html"
+
 
 if (params$show_table && knitr::is_html_output()) {
   sample_excel_attempt_1 |>
@@ -411,7 +410,7 @@ We have the following output
 
 ```{r}
 #| label: sample_excel_attempt_2 html
-#| eval: !expr out_type == "html"
+
 
 if (params$show_table && knitr::is_html_output()) {
   sample_excel_attempt_2 |>
@@ -1323,7 +1322,7 @@ str(head(sample_excel_attempt_3$date_issue))
 
 ```{r}
 #| label: sample_excel_attempt_3 html
-#| eval: !expr out_type == "html"
+
 
 if (params$show_table && knitr::is_html_output()) {
   sample_excel_attempt_3 |>
@@ -1575,7 +1574,7 @@ fixed_date <- sample_excel_attempt_3 |>
 
 ```{r}
 #| label: fix date html
-#| eval: !expr out_type == "html"
+
 
 if (params$show_table && knitr::is_html_output()) {
   fixed_date |>
@@ -1642,7 +1641,7 @@ We are only provided the `local_format_id` labelled 1 to 15 at the last column.
 
 ```{r}
 #| label: read cells html
-#| eval: !expr out_type == "html"
+
 
 if (params$show_table && knitr::is_html_output()) {
   cells |>
@@ -1873,7 +1872,7 @@ With the column index and `local_format_id` identified, we can filter the `cells
 
 ```{r}
 #| label: recall cells html
-#| eval: !expr out_type == "html"
+
 
 if (params$show_table && knitr::is_html_output()) {
   cells |>
@@ -1954,7 +1953,7 @@ With the column index and `local_format_id` identified, we can filter the `cells
 
 ```{r}
 #| label: recall cells html 2
-#| eval: !expr out_type == "html"
+
 
 if (params$show_table && knitr::is_html_output()) {
   cells |>
