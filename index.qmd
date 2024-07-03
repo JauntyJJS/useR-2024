@@ -49,14 +49,20 @@ params:
 
 library(fontawesome)
 library(verbaliseR)
+
 library(here)
 library(readxl)
 library(tidyxl)
+library(collateral)
+library(janitor)
+
 library(dplyr)
+library(tidyr)
 library(purrr)
+library(lubridate)
+
 library(reactable)
 library(pointblank)
-library(collateral)
 library(unheadr)
 library(knitr)
 
@@ -2164,7 +2170,7 @@ fixed_weight |>
 
 ## Can we fix `colour_weight` (alternative) ?
 
-Another approach is to use [***unheadr::annotate_mf_all***](https://unheadr.liomys.mx/reference/annotate_mf_all.html){target="_blank"} but the last column `one_or_zero_issue` must be removed ([sample_excel_remove_last.xlsx](https://raw.githubusercontent.com/JauntyJJS/useR-2024/main//sample_excel_remove_last.xlsx){target="_blank"}).
+Another approach is to use [***unheadr::annotate_mf_all***](https://unheadr.liomys.mx/reference/annotate_mf_all.html){target="_blank"} but the last column `one_or_zero_issue` must be removed. Here is the file required: ([sample_excel_remove_last.xlsx](https://raw.githubusercontent.com/JauntyJJS/useR-2024/main//sample_excel_remove_last.xlsx){target="_blank"}).
 
 :::: {.columns}
 
@@ -2186,7 +2192,7 @@ sample_excel_attempt_4 <- unheadr::annotate_mf_all(
 
 ```
 
-![](images/remove_last.png){fig-alt="Figure showing how to get the Hex8 code from www.schemecolor.com." fig-align="center"}
+![](images/remove_last.png){fig-alt="Figure showing the contents in sample_excel.xlsx with the last column crossed out, indicating it needs to be removed." fig-align="center"}
 :::
 
 :::
@@ -2216,7 +2222,7 @@ sample_excel_attempt_4 |>
     filterable = TRUE,
     defaultPageSize = 5,
     paginationType = "jump",
-      style = list(fontSize = "0.75rem")
+    style = list(fontSize = "0.75rem")
   )
 
 
