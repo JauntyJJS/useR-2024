@@ -1289,7 +1289,7 @@ one_or_zero_check |>
 
 ## Can we fix `date_issue` ?
 
-First, convert the date columns into a list of character, `Date` and logical vectors so that I preserve both the text and date format.
+First, convert the date columns into a list of character, `Date` and logical vectors so that data in both Excel General and Date format are preserved.
 
 :::: {.columns}
 
