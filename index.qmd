@@ -201,7 +201,7 @@ The columns `numeric_integer_issue` and `one_or_zero_issue` are numeric columns.
 
 ## Read Data Attempt 1
 
-Tried to read the data using [***readxl::read_excel***](https://readxl.tidyverse.org/reference/read_excel.html). No warning was provided but...
+Tried to read the data using [***readxl::read_excel***](https://readxl.tidyverse.org/reference/read_excel.html){target="_blank"}. No warning was provided but...
 
 ```{r}
 #| label: read data attempt 1
