@@ -574,7 +574,7 @@ sample_excel_attempt_3 <- readxl::read_excel(
 
 ## Does the `id` column only have unique values ?
 
-Use [***pointblank::rows_distinct***](https://rstudio.github.io/pointblank/reference/rows_distinct.html) to validate columns that needs to have unique values.
+Use [***pointblank::rows_distinct***](https://rstudio.github.io/pointblank/reference/rows_distinct.html){target="_blank"} to validate columns that needs to have unique values.
 
 :::: {.columns}
 
